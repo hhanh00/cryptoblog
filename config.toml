@@ -1,0 +1,4 @@
+baseURL = 'https://blog.cryptoblog21.xyz/'
+languageCode = 'en-us'
+title = 'Random Notes'
+theme = 'ananke'
