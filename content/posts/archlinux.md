@@ -17,3 +17,29 @@ date: 2022-01-10T18:44:16+08:00
 - intellij
 - jdk8-openjdk
 - android sdk, ndk
+
+## Install
+
+- Partition disks
+- Format
+- Mount
+- Pacstrap
+- Gen fstab
+- Chroot
+- Network
+- Locale
+- Timezone
+- Add User, sudo
+- Bootloader
+- X11
+- I3
+- Git
+- Tk
+- Yay
+- Fonts / Monaco
+- X Resources
+- Chrome
+- Lastpass
+- Openssh
+- GPG
+- JDK
