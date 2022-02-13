@@ -33,8 +33,18 @@ ways.
 
 ## L2 ZK-Rollups
 
-They are used for Layer-2 solutions that improve
-the scalability of smart contract. Ethereum has a few
+Previously, we talked about smart contracts. Ethereum is
+famously the first cryptocurrency to introduce them. They 
+gained a lot of popularity and as a result the number of
+transactions on the Ethereum blockchain grew significantly.
+Along with it, transaction fees also increased. To a point
+that it is no longer economical to directly call smart
+contracts on Ethereum. 
+
+A few teams work on reducing the strain on the blockchain (that's layer 1)
+by transmitting and executing transactions off chain (that's layer 2).
+ZKP are used in some of the Layer-2 solutions in order to
+allow verification by smart contracts on the Layer 1. Ethereum has a few
 of them: ZkSync, Aztec and Starkware.
 
 A normal rollup contract is deployed on Ethereum. It 
