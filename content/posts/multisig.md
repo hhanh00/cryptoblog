@@ -10,30 +10,99 @@ draft: true
 Summarize you and/or your team’s background and experience. Demonstrate that you have the skills and expertise necessary for the project that you’re proposing. Institutional bona fides are not required, but we want to hear about your track record.
 
 # Description of Problem or Opportunity  
-In addition to describing the problem/opportunity, please give a sense of how serious or urgent of a need you believe this to be. What evidence do you have? What validation have you already done, or how do you think you could validate this?
+Multisignature transactions have unique use-cases
+not covered by regular transactions.
+- 1 of n: Multiple people sharing the same account
+and any person can spend. The accountant wants to keep
+a record of who did the spending
+- 2 of 2: Every party must sign to approve spending
+- 2 of 3: Escrow account where two counterparties
+can agree to spend but in case of a disagreement they
+can engage of third party.
+- n of n: High security vault
 
 # Proposed Solution
-Describe the solution at a high level. How will this benefit the Zcash community? Please be specific about who the users and stakeholders are and how they would interact with your solution. E.g. retail ZEC holders, Zcash core devs, wallet devs, DeFi users, potential Zcash community participants.  
+The ZF has published the FROST scheme that allows
+the creation of multi party Schnorr signatures.
+
+I propose to use it as a foundation for Zcash
+shielded transactions. There are several outstanding
+design points to complete:
+
+- Derivation of the nullifier keys, viewing keys, etc
+in the context of a multisig account,
+- Encoding of multisig keys
+- The Zcash protocol rerandomizes the authorization signature
+- The FROST protocol has several rounds. The exact
+definition of the message exchanges have to be specified
+- Currently, signing is a regular function. Because
+of the multiple rounds involved, it needs to be 
+refactored into several stages
+- Signers must be able to safely check that the
+request they receive is legitimate
 
 # Solution Format
-What is the exact form of the deliverable you’re creating? E.g. code shipped within the zcashd and zebra code bases, a website, a feature within a wallet, a text/markdown file, user manuals, etc.
+Each of the points mentioned in the previous section
+must be addressed before implementation.
+
+- I will work with the ZF/ECC to validate and audit
+the design, especially regarding the cryptographic aspects.
+- I will write and submit ZIPs as fit,
+- I will define an API with input from the wallet owners
+who are interested in this feature
+- I will implement a library in rust for distributed
+key generation and multisignatures (client and server)
+- I will implement a (trustless) server that orchestrates the signing protocol and the distributed
+key generation
+- I will add test vectors and unit tests for both
+client and servers
+- I will write the documentation to help wallet owners. It remains their choice and responsibility to integrate.
+- I will add multisignature to ZWallet
+
+This project is for NU-5.
 
 # Technical approach
-Dive into the _how_ of your project. Describe your approaches, components, workflows, methodology, etc. Bullet points and diagrams are appreciated!
+
+## Key Generation
+Users participate in a distributed key generation protocol with assistance from a server (hosted in the cloud).
+After which, they are given a secret key share. Alternatively, if they want to do everything off line, they
+can use a command line tool and transmit the data manually. Due to the nature of the protocol, this means sending
+a files to each other party and therefore receiving N-1 files. Then the secret share and public key / viewing key
+are calculated. This is similar to multi sig in Bitcoin which uses xprv and xpub keys to derive joint address.
+
+## Signing a transaction
+
+To spend from the multisig account, the initiator contacts the server passing the transaction data (inputs/outputs),
+encrypted for each of the other parties. Other signers retrieve the signing request and calculate their signature
+share (after confirmation from the user). The shares are aggregated to produce the final transaction and is transmited
+to the network. The server only knows the IP and the timestamp of the transaction.
 
 # How big of a problem would it be to not solve this problem?
 
+Users can use transparent multisignatures but will not benefit from the privacy associated with shielded 
+transactions.
+
 # Execution risks
-What obstacles do you expect? What is most likely to go wrong? Which unknown factors or dependencies could jeopardize success? Who would have to incorporate your work in order for it to be usable?
+
+- Some cryptographic remaining work need design, specification, validation, implementation and audit. Therefore
+there is dependency on ECC/ZF experts who are busy,
+- ZIP may take longer than expected
+- How multisignature addresses fit with UA is TBD
 
 # Unintended Consequences
-What are the negative ramifications if your project is successful? Consider usability, stability, privacy, integrity, availability, decentralization, interoperability, maintainability, technical debt, requisite education, etc.
+- Multisig accounts work differently than regular accounts and users need to be aware, specifically regarding
+storage of their keys.
+- The aggregator server must be up and running or multisig accounts will not work. However, a private
+entity can always deploy their own instance.
 
 # Evaluation plan
-What metrics for success can you share with the community once you’re done? In addition to quantitative metrics, what qualitative metrics do you think you could report?
+
+- Design Documentation
+- ZIP
+- API documentation
+- Implementation as a rust crate
+- Support in ZWallet 
 
 # Schedule and Milestones
-What is your timeline for the project? Include concrete milestones and the major tasks required to complete each milestone. Please note that individual milestones with verifiable deliverables and a detailed budget are specified at the next step of the grant application process.
 
 # Budget
-How much funding do you need, and how will it be allocated (e.g., compensation for your effort, specific equipment, specific external services)? The budget should match the deliverables and completion dates to be provided in the next step. Convention has been for applicants to base their budget on hours of work and an hourly rate, but we are open to proposals based on the value of outcomes instead.  
