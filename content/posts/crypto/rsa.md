@@ -1,7 +1,6 @@
 ---
 title: "RSA - Our First Cryptosystem"
 date: 2022-02-16T14:27:51+08:00
-draft: true
 ---
 
 RSA is a public/private key cryptosystem
@@ -49,7 +48,7 @@ $$ de = 1 \pmod N $$
 $d \times 3 = 1 \pmod 8 \implies d = 3$ because
 $3 \times 3 = 9 = 1 \pmod 8$
 
-The public key is $(n, e)$, i.e $(8, 3)$
+The public key is $(n, e)$, i.e $(15, 3)$
 and the secret key is $d$. 
 
 $N$, $p$ and $q$ can be
@@ -146,7 +145,7 @@ We'll leave it aside because it is a bit more complex.
 
 Let's consider ${1, a, a^2, ...}$ until it eventually
 loops around (it has to because we have a finite 
-number of elements). The lowest $k$ such as $a^{k-1} = 1$
+number of elements). The lowest $k$ such as $a^k = 1$
 is called the order of $a$ relative to $\times$.
 
 We also so earlier that every sub group of a group
@@ -179,7 +178,7 @@ $$ a = dq + r $$
 
 $q$ is the quotient and $r$ is the remainder. $r >= 0$
 
-Then $r = a - dq = a - (ax+by)q = a(1-xq) -byq $$
+Then $r = a - dq = a - (ax+by)q = a(1-xq) -byq $
 
 $r$ has the form $ax + by$ and hence $r = ax+by \ge 0$
 which means $ r \in S \cup \\{0\\} $.
@@ -197,14 +196,14 @@ divider.
 
 Let's take any common divider $c$, $a = uc$ and $b = vc$
 
-Then $$d = ax + by = auc + bvc = (au + bv)c $$
+Then $$d = ax + by = ucx + vcy = (ux + vy)c $$
 
 And $c$ divides $d$. Therefore $c \le d$.
 
 By applying this lemma to our case, we can say
 that there are $x$ and $y$ such as 
 
-$$ ax + bp = 1 $$
+$$ ax + py = 1 $$
 
 because $p$ is prime and the greatest common divider
 of $a$ with a prime is 1.

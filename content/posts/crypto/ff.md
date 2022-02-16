@@ -23,11 +23,13 @@ since the result exceeds must be in the set, we subtract or add multiples of $n$
 For example, if $n = 60$,
 
 \begin{align}
-10 + 20 & = 30 \\\\
-45 + 15 & = 0 \\\\
-45 + 30 & = 15 \\\\
-45 + 45 & = 30 \\\\
+10 + 20 & = 30\quad(60) \\\\
+45 + 15 & = 0\quad(60) \\\\
+45 + 30 & = 15\quad(60) \\\\
+45 + 45 & = 30\quad(60) \\\\
 \end{align}
+
+The $(60)$ indicates that we are doing arithmetic **modulo** 60.
 
 You probably have recognized the behavior of minutes in the hour.
 
@@ -80,11 +82,29 @@ $(N_p, +, \times)$
 
 For this to be field, 
 - $(N_p, +)$ is a commutative group with neutral element $0$,
-- $(N_p, \times)$ is a commutative group with neutral element $1$,
+- $(N_p^*, \times)$ is a commutative group with neutral element $1$,
 - $\times$ distributes over $+$: $(a + b) \times c = a \times c + b \times c$
 
 Again, nothing very special **but** this time $N_p$ is not always a field.
 The problem is that the multiplicative inverse may not exist for every element of $N_p$.
+
+The smallest integer field is $F_2$ which only contains {0, 1}. $F_3$ is also a field.
+$2$ is its own inverse.
+
+$$ 2 \times 2 = 4 = 1 \mod 3 $$
+
+$F_4$ and $F_5$ are fields too. But $N_6$ is not a field. Because $2$ has no inverse.
+
+\begin{align}
+2 \times 1 &= 2 \quad (6) \\\\
+2 \times 2 &= 4 \quad (6) \\\\
+2 \times 3 &= 6 = 0 \quad (6) \\\\
+2 \times 4 &= 8 = 2 \quad (6) \\\\
+2 \times 5 &= 6 = 4 \quad (6) \\\\
+\end{align}
+
+When the size of the set is even and $> 2$, ($2x \mod n)$ will be an even number for any value
+of $x$. Therefore it cannot be equal to 1 and 2 has no inverse.
 
 In fact, $p$ must be a prime number or a power of a prime number.
 
