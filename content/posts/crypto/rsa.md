@@ -176,7 +176,8 @@ If we divide $a$ by $d$,
 
 $$ a = dq + r $$
 
-$q$ is the quotient and $r$ is the remainder. $r >= 0$
+$q$ is the quotient and $r$ is the remainder. 
+$0 <= r < d$
 
 Then $r = a - dq = a - (ax+by)q = a(1-xq) -byq $
 
