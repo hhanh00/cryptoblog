@@ -1,6 +1,7 @@
 ---
 title: "Zero Knowledge Proof Overview"
 date: 2022-02-10T11:04:58+08:00
+weight: 10
 ---
 
 We are going to spend quite some time discussing crypto,

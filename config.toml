@@ -1,4 +1,28 @@
 baseURL = 'https://blog.cryptoblog21.xyz/'
 languageCode = 'en-us'
 title = 'Random Notes'
-theme = 'ananke'
+theme = 'docsy'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "tango"
+
+[params.katex]
+enable = true
+
+[[params.katex.options.delimiters]]
+  left = "$$"
+  right = "$$"
+  display = true
+[[params.katex.options.delimiters]]
+  left = "\\begin{align}"
+  right = "\\end{align}"
+  display = true
+[[params.katex.options.delimiters]]
+  left = "$"
+  right = "$"
+  display = false
+

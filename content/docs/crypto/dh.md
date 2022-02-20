@@ -1,6 +1,7 @@
 ---
 title: "Diffie Hellman"
 date: 2022-02-18T11:49:09+08:00
+weight: 40
 ---
 
 Let's continue our exploration of popular cryptosystems with another

@@ -1,6 +1,7 @@
 ---
 title: "Finite Fields"
 date: 2022-02-12T21:01:42+08:00
+weight: 10
 ---
 
 In one of the previous posts, we discussed finite sets: Sets with
@@ -23,21 +24,21 @@ since the result exceeds must be in the set, we subtract or add multiples of $n$
 For example, if $n = 60$,
 
 \begin{align}
-10 + 20 & = 30\quad(60) \\\\
-45 + 15 & = 0\quad(60) \\\\
-45 + 30 & = 15\quad(60) \\\\
-45 + 45 & = 30\quad(60) \\\\
+10 + 20 & = 30 \pmod{60} \\\\
+45 + 15 & = 0 \pmod{60} \\\\
+45 + 30 & = 15 \pmod{60} \\\\
+45 + 45 & = 30 \pmod{60} \\\\
 \end{align}
 
-The $(60)$ indicates that we are doing arithmetic **modulo** 60.
+The $\pmod{60}$ indicates that we are doing arithmetic **modulo** 60.
 
 You probably have recognized the behavior of minutes in the hour.
 
 Multiplication works the same way:
 
 \begin{align}
-5 \times 10 & = 50 \\\\
-10 \times 20 & = 20 \\\\
+5 \times 10 & = 50 \pmod{60} \\\\
+10 \times 20 & = 20 \pmod{60} \\\\
 \end{align}
 
 The last one is because $ 10 \times 20 = 200 = 180 + 20 = 60 \times 3 + 20 $. Multiples of 60 are discarded, 
@@ -96,11 +97,11 @@ $$ 2 \times 2 = 4 = 1 \mod 3 $$
 $F_4$ and $F_5$ are fields too. But $N_6$ is not a field. Because $2$ has no inverse.
 
 \begin{align}
-2 \times 1 &= 2 \quad (6) \\\\
-2 \times 2 &= 4 \quad (6) \\\\
-2 \times 3 &= 6 = 0 \quad (6) \\\\
-2 \times 4 &= 8 = 2 \quad (6) \\\\
-2 \times 5 &= 6 = 4 \quad (6) \\\\
+2 \times 1 &= 2\pmod 6 \\\\
+2 \times 2 &= 4\pmod 6 \\\\
+2 \times 3 &= 6 = 0\pmod 6 \\\\
+2 \times 4 &= 8 = 2\pmod 6 \\\\
+2 \times 5 &= 6 = 4\pmod 6 \\\\
 \end{align}
 
 When the size of the set is even and $> 2$, ($2x \mod n)$ will be an even number for any value
@@ -115,6 +116,8 @@ $p$ is a very large prime number. For Bitcoin, $p$ is
 
 \begin{align}
  p & = 2^{256} - 2^{32} - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1  \\\\
- & = 115792089237316195423570985008687907853269984665640564039457584007908834671663 \\\\
+ & = 1157920892373161954235709850086879078
+ ...\\\\
+ & ...53269984665640564039457584007908834671663 \\\\
 \end{align}
 

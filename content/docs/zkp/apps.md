@@ -1,6 +1,7 @@
 ---
 title: "Applications of ZKP"
 date: 2022-02-10T22:56:07+08:00
+weight: 20
 ---
 
 Today we look at some coins that use zk-proofs in

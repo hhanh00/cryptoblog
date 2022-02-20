@@ -54,7 +54,8 @@ Do you notice something special?
 The function maps values from the source set to different values in the
 destination set. In other words, 
 
-$$\forall (x,y), x \ne y \Rightarrow f(x) \ne f(y)$$
+$$ \forall (x,y), x \ne y \Rightarrow f(x) \ne f(y) $$
+$$ f(y) $$
 
 Such function is called "injective". Injective functions are
 particularly interesting because the reverse of relation, i.e

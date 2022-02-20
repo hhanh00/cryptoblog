@@ -1,6 +1,7 @@
 ---
 title: "Hard Problems?"
 date: 2022-02-13T11:52:10+08:00
+weight: 20
 ---
 
 Today we are going to discuss problem complexity.
@@ -38,7 +39,8 @@ $P_n(x) = x^n$ for some fixed value $n$ (it does not depend on $x$).
 Then we calculate $ f / P_n $ and we determine if the result still
 grows to the infinity or it eventually stops.
 
-For $n=1$, $$f / P_1 = (x^2+5)/x = x + 5/x $$
+For $n=1$, 
+$$f / P_1 = (x^2+5)/x = x + 5/x $$
 
 Now the term $5/x$ will gets smaller and smaller as $x$ grows,
 so the remaining interesting term is just $x$. That is still
