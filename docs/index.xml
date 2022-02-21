@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random Notes – Crypto Blog</title><link>https://blog.cryptoblog21.xyz/docs/</link><description>Recent content in Crypto Blog on Random Notes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 18 Feb 2022 11:49:09 +0800</lastBuildDate><atom:link href="https://blog.cryptoblog21.xyz/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Finite Fields</title><link>https://blog.cryptoblog21.xyz/docs/crypto/ff/</link><pubDate>Sat, 12 Feb 2022 21:01:42 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/crypto/ff/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random Notes – Crypto Blog</title><link>https://hhanh00.github.io/cryptoblog/docs/</link><description>Recent content in Crypto Blog on Random Notes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 18 Feb 2022 11:49:09 +0800</lastBuildDate><atom:link href="https://hhanh00.github.io/cryptoblog/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Finite Fields</title><link>https://hhanh00.github.io/cryptoblog/docs/crypto/ff/</link><pubDate>Sat, 12 Feb 2022 21:01:42 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/crypto/ff/</guid><description>
 &lt;p>In one of the previous posts, we discussed finite sets: Sets with
 a non infinite number of elements.&lt;/p>
 &lt;p>We also talked about functions from sets to sets and a particular
@@ -81,7 +81,7 @@ p &amp;amp; = 2^{256} - 2^{32} - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1 \\
 &amp;amp; = 1157920892373161954235709850086879078
 &amp;hellip;\\
 &amp;amp; &amp;hellip;53269984665640564039457584007908834671663 \\
-\end{align}&lt;/p></description></item><item><title>Docs: Zero Knowledge Proof Overview</title><link>https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/</link><pubDate>Thu, 10 Feb 2022 11:04:58 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/</guid><description>
+\end{align}&lt;/p></description></item><item><title>Docs: Zero Knowledge Proof Overview</title><link>https://hhanh00.github.io/cryptoblog/docs/zkp/zkp-overview/</link><pubDate>Thu, 10 Feb 2022 11:04:58 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/zkp/zkp-overview/</guid><description>
 &lt;p>We are going to spend quite some time discussing crypto,
 maths and computer science so it is worth taking some
 time to put things in perspective.&lt;/p>
@@ -202,7 +202,7 @@ only very carefuly crafted software could run.&lt;/p>
 &lt;p>The goal of this series of videos is to gain a moderate understanding of what ZKP
 can do today and what they have in store for the near future.&lt;/p>
 &lt;p>Let&amp;rsquo;s end this overview here. Next time, we will start looking at some of the usage of ZKP
-that are already in production.&lt;/p></description></item><item><title>Docs: Hard Problems?</title><link>https://blog.cryptoblog21.xyz/docs/crypto/np/</link><pubDate>Sun, 13 Feb 2022 11:52:10 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/crypto/np/</guid><description>
+that are already in production.&lt;/p></description></item><item><title>Docs: Hard Problems?</title><link>https://hhanh00.github.io/cryptoblog/docs/crypto/np/</link><pubDate>Sun, 13 Feb 2022 11:52:10 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/crypto/np/</guid><description>
 &lt;p>Today we are going to discuss problem complexity.
 We often hear &amp;ldquo;This problem is too hard for current
 computer hardware, or this has an exponential growth&amp;hellip;&amp;rdquo;&lt;/p>
@@ -371,7 +371,7 @@ The verifiers who receives the proof and wants to verify it.&lt;/p>
 &lt;p>Generally speaking, we accept that the prover has to do
 additional work besides finding the solution in order to
 calculate the proof but the verifier should do much less
-work than solving the problem.&lt;/p></description></item><item><title>Docs: Applications of ZKP</title><link>https://blog.cryptoblog21.xyz/docs/zkp/apps/</link><pubDate>Thu, 10 Feb 2022 22:56:07 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/zkp/apps/</guid><description>
+work than solving the problem.&lt;/p></description></item><item><title>Docs: Applications of ZKP</title><link>https://hhanh00.github.io/cryptoblog/docs/zkp/apps/</link><pubDate>Thu, 10 Feb 2022 22:56:07 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/zkp/apps/</guid><description>
 &lt;p>Today we look at some coins that use zk-proofs in
 one way or another.&lt;/p>
 &lt;p>But let&amp;rsquo;s start with what zk-proofs can do.&lt;/p>
@@ -440,7 +440,7 @@ the function verifies its validity among other things.&lt;/p>
 of ZKP in production blockchains. I am sure there are
 going to be many more projects using ZKP. The proving
 systems keep getting better and better, and they
-become more accessible to the non-experts.&lt;/p></description></item><item><title>Docs: RSA - Our First Cryptosystem</title><link>https://blog.cryptoblog21.xyz/docs/crypto/rsa/</link><pubDate>Wed, 16 Feb 2022 14:27:51 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/crypto/rsa/</guid><description>
+become more accessible to the non-experts.&lt;/p></description></item><item><title>Docs: RSA - Our First Cryptosystem</title><link>https://hhanh00.github.io/cryptoblog/docs/crypto/rsa/</link><pubDate>Wed, 16 Feb 2022 14:27:51 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/crypto/rsa/</guid><description>
 &lt;p>RSA is a public/private key cryptosystem
 widely used currently.&lt;/p>
 &lt;p>With the knowledge of finite fields we
@@ -578,7 +578,7 @@ that there are $x$ and $y$ such as&lt;/p>
 of $a$ with a prime is 1.&lt;/p>
 &lt;p>This is the same as saying&lt;/p>
 &lt;p>$$ ax = 1 \pmod p $$&lt;/p>
-&lt;p>And $x$ is the inverse of $a$.&lt;/p></description></item><item><title>Docs: Diffie Hellman</title><link>https://blog.cryptoblog21.xyz/docs/crypto/dh/</link><pubDate>Fri, 18 Feb 2022 11:49:09 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/crypto/dh/</guid><description>
+&lt;p>And $x$ is the inverse of $a$.&lt;/p></description></item><item><title>Docs: Diffie Hellman</title><link>https://hhanh00.github.io/cryptoblog/docs/crypto/dh/</link><pubDate>Fri, 18 Feb 2022 11:49:09 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/crypto/dh/</guid><description>
 &lt;p>Let&amp;rsquo;s continue our exploration of popular cryptosystems with another
 widely used protocol: The Diffie Hellman (DH) key agreement protocol.&lt;/p>
 &lt;p>When you connect to a &lt;code>https&lt;/code> website, you are using the DH protocol.

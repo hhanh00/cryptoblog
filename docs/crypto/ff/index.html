@@ -4,16 +4,16 @@
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=generator content="Hugo 0.91.2">
 <meta name=robots content="index, follow">
-<link rel="shortcut icon" href=/favicons/favicon.ico>
-<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
-<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
-<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
-<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
-<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
-<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
-<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
-<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
-<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<link rel="shortcut icon" href=/cryptoblog/favicons/favicon.ico>
+<link rel=apple-touch-icon href=/cryptoblog/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=icon type=image/png href=/cryptoblog/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/cryptoblog/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/cryptoblog/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/cryptoblog/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/cryptoblog/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/cryptoblog/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/cryptoblog/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/cryptoblog/favicons/android-192x192.png sizes=192x192>
 <title>Finite Fields | Random Notes</title>
 <meta name=description content="In one of the previous posts, we discussed finite sets: Sets with
 a non infinite number of elements.
@@ -23,7 +23,7 @@ We also talked about functions from sets to sets …">
 We also talked about functions from sets to sets and a particular type of function that is quite useful, the 1 to 1 functions. They map each element from the source set to exactly unique one element of the destination set and vice-versa.
 We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is the number of elements of the set.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://blog.cryptoblog21.xyz/docs/crypto/ff/"><meta property="article:section" content="docs">
+<meta property="og:url" content="https://hhanh00.github.io/cryptoblog/docs/crypto/ff/"><meta property="article:section" content="docs">
 <meta property="article:published_time" content="2022-02-12T21:01:42+08:00">
 <meta property="article:modified_time" content="2022-02-12T21:01:42+08:00">
 <meta itemprop=name content="Finite Fields">
@@ -37,14 +37,14 @@ We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is t
 <meta name=twitter:description content="In one of the previous posts, we discussed finite sets: Sets with a non infinite number of elements.
 We also talked about functions from sets to sets and a particular type of function that is quite useful, the 1 to 1 functions. They map each element from the source set to exactly unique one element of the destination set and vice-versa.
 We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is the number of elements of the set.">
-<link rel=preload href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
-<link href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
+<link rel=preload href=/cryptoblog/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
+<link href=/cryptoblog/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
 </head>
 <body class=td-page>
 <header>
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-<a class=navbar-brand href=/>
+<a class=navbar-brand href=/cryptoblog/>
 <span class=navbar-logo></span><span class=font-weight-bold>Random Notes</span>
 </a>
 <div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
@@ -65,29 +65,29 @@ We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is t
 </form>
 <nav class="collapse td-sidebar-nav" id=td-section-nav>
 <ul class="td-sidebar-nav__section pr-md-3 ul-0">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docs-li>
-<a href=/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-docs><span>Crypto Blog</span></a>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-cryptoblogdocs-li>
+<a href=/cryptoblog/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-cryptoblogdocs><span>Crypto Blog</span></a>
 <ul class=ul-1>
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docscrypto-li>
-<a href=/docs/crypto/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docscrypto><span>Crypto Related Docs</span></a>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-cryptoblogdocscrypto-li>
+<a href=/cryptoblog/docs/crypto/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-cryptoblogdocscrypto><span>Crypto Related Docs</span></a>
 <ul class="ul-2 foldable">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-docscryptoff-li>
-<a href=/docs/crypto/ff/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-docscryptoff><span class=td-sidebar-nav-active-item>Finite Fields</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptonp-li>
-<a href=/docs/crypto/np/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptonp><span>Hard Problems?</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptorsa-li>
-<a href=/docs/crypto/rsa/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptorsa><span>RSA - Our First Cryptosystem</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptodh-li>
-<a href=/docs/crypto/dh/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptodh><span>Diffie Hellman</span></a>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-cryptoblogdocscryptoff-li>
+<a href=/cryptoblog/docs/crypto/ff/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-cryptoblogdocscryptoff><span class=td-sidebar-nav-active-item>Finite Fields</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-cryptoblogdocscryptonp-li>
+<a href=/cryptoblog/docs/crypto/np/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-cryptoblogdocscryptonp><span>Hard Problems?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-cryptoblogdocscryptorsa-li>
+<a href=/cryptoblog/docs/crypto/rsa/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-cryptoblogdocscryptorsa><span>RSA - Our First Cryptosystem</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-cryptoblogdocscryptodh-li>
+<a href=/cryptoblog/docs/crypto/dh/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-cryptoblogdocscryptodh><span>Diffie Hellman</span></a>
 </li>
 </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docszkp-li>
-<a href=/docs/zkp/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docszkp><span>Zero Knowledge Proofs</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-cryptoblogdocszkp-li>
+<a href=/cryptoblog/docs/zkp/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-cryptoblogdocszkp><span>Zero Knowledge Proofs</span></a>
 <ul class="ul-2 foldable">
-<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpzkp-overview-li>
-<a href=/docs/zkp/zkp-overview/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpzkp-overview><span>Zero Knowledge Proof Overview</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpapps-li>
-<a href=/docs/zkp/apps/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpapps><span>Applications of ZKP</span></a>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-cryptoblogdocszkpzkp-overview-li>
+<a href=/cryptoblog/docs/zkp/zkp-overview/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-cryptoblogdocszkpzkp-overview><span>Zero Knowledge Proof Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-cryptoblogdocszkpapps-li>
+<a href=/cryptoblog/docs/zkp/apps/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-cryptoblogdocszkpapps><span>Applications of ZKP</span></a>
 </li>
 </ul>
 </li>
@@ -113,13 +113,13 @@ We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is t
 <nav aria-label=breadcrumb class=td-breadcrumbs>
 <ol class=breadcrumb>
 <li class=breadcrumb-item>
-<a href=https://blog.cryptoblog21.xyz/docs/>Crypto Blog</a>
+<a href=https://hhanh00.github.io/cryptoblog/docs/>Crypto Blog</a>
 </li>
 <li class=breadcrumb-item>
-<a href=https://blog.cryptoblog21.xyz/docs/crypto/>Crypto Related Docs</a>
+<a href=https://hhanh00.github.io/cryptoblog/docs/crypto/>Crypto Related Docs</a>
 </li>
 <li class="breadcrumb-item active" aria-current=page>
-<a href=https://blog.cryptoblog21.xyz/docs/crypto/ff/>Finite Fields</a>
+<a href=https://hhanh00.github.io/cryptoblog/docs/crypto/ff/>Finite Fields</a>
 </li>
 </ol>
 </nav>
@@ -229,10 +229,10 @@ p & = 2^{256} - 2^{32} - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1 \\
 </div>
 <script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
-<script src=/js/tabpane-persist.js></script>
+<script src=/cryptoblog/js/tabpane-persist.js></script>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin=anonymous>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ==" crossorigin=anonymous></script>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity="sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==" crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!1,left:"$",right:"$"}]})'></script>
-<script src=/js/main.min.a40bea2c8205737457df31d67ee5bae2224f86dfaec1564036c65ab9f943e910.js integrity="sha256-pAvqLIIFc3RX3zHWfuW64iJPht+uwVZANsZauflD6RA=" crossorigin=anonymous></script>
+<script src=/cryptoblog/js/main.min.64d8ab8452d4c9c1950c0fd24b3292894ee9bbecb1845d03ed5a5b8ab82e4734.js integrity="sha256-ZNirhFLUycGVDA/SSzKSiU7pu+yxhF0D7VpbirguRzQ=" crossorigin=anonymous></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random Notes – Zero Knowledge Proofs</title><link>https://blog.cryptoblog21.xyz/docs/zkp/</link><description>Recent content in Zero Knowledge Proofs on Random Notes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Feb 2022 22:56:07 +0800</lastBuildDate><atom:link href="https://blog.cryptoblog21.xyz/docs/zkp/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Zero Knowledge Proof Overview</title><link>https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/</link><pubDate>Thu, 10 Feb 2022 11:04:58 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random Notes – Zero Knowledge Proofs</title><link>https://hhanh00.github.io/cryptoblog/docs/zkp/</link><description>Recent content in Zero Knowledge Proofs on Random Notes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Feb 2022 22:56:07 +0800</lastBuildDate><atom:link href="https://hhanh00.github.io/cryptoblog/docs/zkp/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Zero Knowledge Proof Overview</title><link>https://hhanh00.github.io/cryptoblog/docs/zkp/zkp-overview/</link><pubDate>Thu, 10 Feb 2022 11:04:58 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/zkp/zkp-overview/</guid><description>
 &lt;p>We are going to spend quite some time discussing crypto,
 maths and computer science so it is worth taking some
 time to put things in perspective.&lt;/p>
@@ -119,7 +119,7 @@ only very carefuly crafted software could run.&lt;/p>
 &lt;p>The goal of this series of videos is to gain a moderate understanding of what ZKP
 can do today and what they have in store for the near future.&lt;/p>
 &lt;p>Let&amp;rsquo;s end this overview here. Next time, we will start looking at some of the usage of ZKP
-that are already in production.&lt;/p></description></item><item><title>Docs: Applications of ZKP</title><link>https://blog.cryptoblog21.xyz/docs/zkp/apps/</link><pubDate>Thu, 10 Feb 2022 22:56:07 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/zkp/apps/</guid><description>
+that are already in production.&lt;/p></description></item><item><title>Docs: Applications of ZKP</title><link>https://hhanh00.github.io/cryptoblog/docs/zkp/apps/</link><pubDate>Thu, 10 Feb 2022 22:56:07 +0800</pubDate><guid>https://hhanh00.github.io/cryptoblog/docs/zkp/apps/</guid><description>
 &lt;p>Today we look at some coins that use zk-proofs in
 one way or another.&lt;/p>
 &lt;p>But let&amp;rsquo;s start with what zk-proofs can do.&lt;/p>
