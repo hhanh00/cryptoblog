@@ -1,0 +1,302 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=robots content="index, follow">
+<link rel="shortcut icon" href=/favicons/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<title>RSA - Our First Cryptosystem | Random Notes</title>
+<meta name=description content="RSA is a public/private key cryptosystem
+widely used currently.
+With the knowledge of finite fields we
+acquired, we can understand how it works.
+We …">
+<meta property="og:title" content="RSA - Our First Cryptosystem">
+<meta property="og:description" content="RSA is a public/private key cryptosystem widely used currently.
+With the knowledge of finite fields we acquired, we can understand how it works.
+We will not be able to prove that it is safe against code breaking but generally speaking, cryptoanalysis is beyond our scope.
+The first step of any cryptosystem is key generation.
+Key Generation First you pick two prime numbers $p$ and $q$. Normally these would be very large but we are gonna use $p=3$ and $q=5$ for now.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cryptoblog21.xyz/docs/crypto/rsa/"><meta property="article:section" content="docs">
+<meta property="article:published_time" content="2022-02-16T14:27:51+08:00">
+<meta property="article:modified_time" content="2022-02-16T14:27:51+08:00">
+<meta itemprop=name content="RSA - Our First Cryptosystem">
+<meta itemprop=description content="RSA is a public/private key cryptosystem widely used currently.
+With the knowledge of finite fields we acquired, we can understand how it works.
+We will not be able to prove that it is safe against code breaking but generally speaking, cryptoanalysis is beyond our scope.
+The first step of any cryptosystem is key generation.
+Key Generation First you pick two prime numbers $p$ and $q$. Normally these would be very large but we are gonna use $p=3$ and $q=5$ for now."><meta itemprop=datePublished content="2022-02-16T14:27:51+08:00">
+<meta itemprop=dateModified content="2022-02-16T14:27:51+08:00">
+<meta itemprop=wordCount content="1057">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="RSA - Our First Cryptosystem">
+<meta name=twitter:description content="RSA is a public/private key cryptosystem widely used currently.
+With the knowledge of finite fields we acquired, we can understand how it works.
+We will not be able to prove that it is safe against code breaking but generally speaking, cryptoanalysis is beyond our scope.
+The first step of any cryptosystem is key generation.
+Key Generation First you pick two prime numbers $p$ and $q$. Normally these would be very large but we are gonna use $p=3$ and $q=5$ for now.">
+<link rel=preload href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
+<link href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
+</head>
+<body class=td-page>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+<a class=navbar-brand href=/>
+<span class=navbar-logo></span><span class=font-weight-bold>Random Notes</span>
+</a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+</ul>
+</div>
+<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+<div id=td-sidebar-menu class=td-sidebar__inner>
+<form class="td-sidebar__search d-flex align-items-center">
+<button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
+</button>
+</form>
+<nav class="collapse td-sidebar-nav" id=td-section-nav>
+<ul class="td-sidebar-nav__section pr-md-3 ul-0">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docs-li>
+<a href=/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-docs><span>Crypto Blog</span></a>
+<ul class=ul-1>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docscrypto-li>
+<a href=/docs/crypto/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docscrypto><span>Crypto Related Docs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptoff-li>
+<a href=/docs/crypto/ff/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptoff><span>Finite Fields</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptonp-li>
+<a href=/docs/crypto/np/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptonp><span>Hard Problems?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-docscryptorsa-li>
+<a href=/docs/crypto/rsa/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-docscryptorsa><span class=td-sidebar-nav-active-item>RSA - Our First Cryptosystem</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptodh-li>
+<a href=/docs/crypto/dh/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptodh><span>Diffie Hellman</span></a>
+</li>
+</ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docszkp-li>
+<a href=/docs/zkp/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docszkp><span>Zero Knowledge Proofs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpzkp-overview-li>
+<a href=/docs/zkp/zkp-overview/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpzkp-overview><span>Zero Knowledge Proof Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpapps-li>
+<a href=/docs/zkp/apps/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpapps><span>Applications of ZKP</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+<aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+</div>
+<div class=td-toc><nav id=TableOfContents>
+<ul>
+<li><a href=#key-generation>Key Generation</a></li>
+<li><a href=#encryption-and-decryption>Encryption and Decryption</a></li>
+<li><a href=#proof-that-it-works>Proof that it works</a></li>
+<li><a href=#fermat-little-theorem-proof>Fermat Little Theorem Proof</a></li>
+<li><a href=#proof-that-f_p-is-a-group>Proof that $F^*_p$ is a group</a></li>
+</ul>
+</nav></div>
+</aside>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<nav aria-label=breadcrumb class=td-breadcrumbs>
+<ol class=breadcrumb>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/>Crypto Blog</a>
+</li>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/crypto/>Crypto Related Docs</a>
+</li>
+<li class="breadcrumb-item active" aria-current=page>
+<a href=https://blog.cryptoblog21.xyz/docs/crypto/rsa/>RSA - Our First Cryptosystem</a>
+</li>
+</ol>
+</nav>
+<div class=td-content>
+<h1>RSA - Our First Cryptosystem</h1>
+<header class=article-meta>
+</header>
+<p>RSA is a public/private key cryptosystem
+widely used currently.</p>
+<p>With the knowledge of finite fields we
+acquired, we can understand how it works.</p>
+<p>We will not be able to prove that it is
+safe against code breaking but generally
+speaking, cryptoanalysis is beyond our scope.</p>
+<p>The first step of any cryptosystem is key generation.</p>
+<h2 id=key-generation>Key Generation</h2>
+<p>First you pick two prime numbers $p$ and $q$.
+Normally these would be very large but we are
+gonna use $p=3$ and $q=5$ for now.</p>
+<p>By the way, a prime number is an integer that
+has <em>exactly</em> two dividers: 1 and itself.</p>
+<p>For example, 2 is a prime number. So is 3, 5 and 7.
+But 4 is not a prime number because $2 \times 2 = 4$.
+1 is not a prime number because it has only one divider.</p>
+<p>Now calculate $$n = pq$$
+$n = 3 \times 5 = 15$.</p>
+<p>Also calculate $$N = (p-1)(q-1)$$
+$N = 2 \times 4 = 8$</p>
+<p>$N$ should be kept secret.</p>
+<p>Choose $e$ such as $e$ and $N$ don&rsquo;t have any divider
+in common.</p>
+<p>We pick $e = 3$</p>
+<p>Find the inverse of $e$ in $F_N$.</p>
+<p>$$ de = 1 \pmod N $$</p>
+<p>$d \times 3 = 1 \pmod 8 \implies d = 3$ because
+$3 \times 3 = 9 = 1 \pmod 8$</p>
+<p>The public key is $(n, e)$, i.e $(15, 3)$
+and the secret key is $d$.</p>
+<p>$N$, $p$ and $q$ can be
+discarded.</p>
+<h2 id=encryption-and-decryption>Encryption and Decryption</h2>
+<p>You can encrypt using either $e$ or $d$
+and decrypt with the other key. They can be
+used interchangibly. We know $n$ because it is
+part of the public key.</p>
+<p>Suppose we use $e$ (and $n$)</p>
+<p>To encrypt a message $m$, we calculate
+$$ c = m^e \pmod n $$</p>
+<p>To decrypt the cypher $c$, we do the same but with
+other other key
+$$ m = c^d \pmod n $$</p>
+<p>Let&rsquo;s say $m = 2$. $$ c = 2^3 = 8 \pmod{15} $$</p>
+<p>Then to decrypt, we calculate $c^3$ because $d=3$ (it&rsquo;s
+a coincidence that $d=e$).</p>
+<p>$$ 8^3 = 512 = 2 + 34 \times 15 = 2 \pmod{15} $$</p>
+<p>and we got back our message $m$.</p>
+<h2 id=proof-that-it-works>Proof that it works</h2>
+<p>Basically, we have to prove that $$ c ^ d = m \pmod n $$</p>
+<p>Put together,</p>
+<p>\begin{align}
+c &= m^e \pmod n \\
+m'&= c^d \\
+m'&= c^d \\
+&= (m^e)^d \\
+&= m^{ed} \\
+\end{align}</p>
+<p>and we want to prove that $m'=m$.</p>
+<p>To do so, we are going to use a theorem
+called Fermat&rsquo;s Little Theorem.</p>
+<p>For any $a$ and prime $p$,
+$$ a^{p-1} = 1 \pmod p $$</p>
+<p>\begin{align}
+m^{ed} &= m \pmod n \\
+m^{ed} - m &= 0 \pmod n \\
+&= kn \\
+&= kpq \\
+\end{align}</p>
+<p>\begin{align}
+m^{ed} &= m \pmod p\quad \mathrm{and} \\
+m^{ed} &= m \pmod q \\
+\end{align}</p>
+<p>Let&rsquo;s prove the first equation. The second has the
+same proof since $p$ and $q$ have the same properties.</p>
+<p>If $m = 0 \pmod p$, $p$ divides $m$. $m^{ed}$ is
+a multiple of $m$, therefore $p$ divides $m^{ed}$ too.
+Then $m' = m^{ed} = 0 \pmod p$, and $m' = m$.</p>
+<p>If $m \ne 0 \pmod p$, $m^{ed} = m^{ed-1}m$.</p>
+<p>But $ed = 1 \pmod N$, therefore there is a $k$
+such as $ed = kN + 1$</p>
+<p>$$m^{ed-1} = m^{kN} = m^{k(p-1)(q-1)} = {m^{p-1}}^{k(q-1)}$$</p>
+<p>$$ m^{p-1} = 1 \pmod p $$
+So
+$$ m^{ed-1} = {m^{p-1}}^{k(q-1)} = 1^{k(q-1)} = 1 \pmod p$$
+Then
+$$ m' = m^{ed} = m $$</p>
+<p>All that is left to do is to prove Fermat&rsquo;s Little Theorem.</p>
+<h2 id=fermat-little-theorem-proof>Fermat Little Theorem Proof</h2>
+<p>Since $p$ is prime, $F_p$ is a field and ${1, 2, &mldr;, p-1}$ form a group.</p>
+<p>We saw earlier that the only tricky part is to prove
+that every element of $F^*_p$ has an inverse.
+We&rsquo;ll leave it aside because it is a bit more complex.</p>
+<p>Let&rsquo;s consider ${1, a, a^2, &mldr;}$ until it eventually
+loops around (it has to because we have a finite
+number of elements). The lowest $k$ such as $a^k = 1$
+is called the order of $a$ relative to $\times$.</p>
+<p>We also so earlier that every sub group of a group
+has a count of elements (cardinality)
+that divides the cardinality of the group, here $p-1$.</p>
+<p>$$ a^{p-1} = a^{kn} = 1^n = 1 \pmod p $$</p>
+<h2 id=proof-that-f_p-is-a-group>Proof that $F^*_p$ is a group</h2>
+<p>We use Beyzout&rsquo;s Lemma:</p>
+<p>Given $a$ and $b$ and their greatest common divider $d$,
+there are $x$ and $y$ such as</p>
+<p>$$ ax + by = d $$</p>
+<p>$x$ and $y$ are positive or negative integers.</p>
+<p>The proof uses a common technique of algebra. Any non empty set of positive numbers has a smallest element.</p>
+<p>If we consider $S = \left\{ ax + by, \text{ such as } ax + by > 0 \right\}$, it is not empty (it contains $a$ and $b$) therefore it has a smallest element $d$.</p>
+<p>It turns out $d$ is the greatest common divider of $a$
+and $b$.</p>
+<p>If we divide $a$ by $d$,</p>
+<p>$$ a = dq + r $$</p>
+<p>$q$ is the quotient and $r$ is the remainder.
+$0 &lt;= r &lt; d$</p>
+<p>Then $r = a - dq = a - (ax+by)q = a(1-xq) -byq $</p>
+<p>$r$ has the form $ax + by$ and hence $r = ax+by \ge 0$
+which means $ r \in S \cup \{0\} $.
+We also know $r &lt; d$. So $r$ cannot be in $S$ since
+it&rsquo;s smaller than the smallest element of $S$.
+Then it must be that $r = 0$ and $a = dq$.</p>
+<p>$d$ divides $a$.</p>
+<p>Likewise, we can prove than $d$ divides $b$.
+$d$ is a common divider of $a$ and $b$.</p>
+<p>Now we need to prove that it is the greatest common
+divider.</p>
+<p>Let&rsquo;s take any common divider $c$, $a = uc$ and $b = vc$</p>
+<p>Then $$d = ax + by = ucx + vcy = (ux + vy)c $$</p>
+<p>And $c$ divides $d$. Therefore $c \le d$.</p>
+<p>By applying this lemma to our case, we can say
+that there are $x$ and $y$ such as</p>
+<p>$$ ax + py = 1 $$</p>
+<p>because $p$ is prime and the greatest common divider
+of $a$ with a prime is 1.</p>
+<p>This is the same as saying</p>
+<p>$$ ax = 1 \pmod p $$</p>
+<p>And $x$ is the inverse of $a$.</p>
+</div>
+</main>
+</div>
+</div>
+<footer class="bg-dark py-5 row d-print-none">
+<div class="container-fluid mx-sm-5">
+<div class=row>
+<div class="col-6 col-sm-4 text-xs-center order-sm-2">
+</div>
+<div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+</div>
+<div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
+<script src=/js/tabpane-persist.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ==" crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity="sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==" crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!1,left:"$",right:"$"}]})'></script>
+<script src=/js/main.min.a40bea2c8205737457df31d67ee5bae2224f86dfaec1564036c65ab9f943e910.js integrity="sha256-pAvqLIIFc3RX3zHWfuW64iJPht+uwVZANsZauflD6RA=" crossorigin=anonymous></script>
+</body>
+</html>

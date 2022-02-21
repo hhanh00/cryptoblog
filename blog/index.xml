@@ -1,0 +1,43 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random Notes – Blogs</title><link>https://blog.cryptoblog21.xyz/blog/</link><description>Recent content in Blogs on Random Notes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 Jan 2022 18:44:16 +0800</lastBuildDate><atom:link href="https://blog.cryptoblog21.xyz/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Archlinux</title><link>https://blog.cryptoblog21.xyz/blog/archlinux/</link><pubDate>Mon, 10 Jan 2022 18:44:16 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/blog/archlinux/</guid><description>
+&lt;ul>
+&lt;li>hostname, hosts, iwd, dhcpcd, wpa_supplicant&lt;/li>
+&lt;li>locale-gen, locale.conf&lt;/li>
+&lt;li>localtime&lt;/li>
+&lt;li>useradd&lt;/li>
+&lt;li>grub&lt;/li>
+&lt;li>xorg, xorg-xinit, xterm, i3, dmenu, ttf-dejavu&lt;/li>
+&lt;li>git, tk, gtk2, yay&lt;/li>
+&lt;li>ttf-monaco&lt;/li>
+&lt;li>.Xresources, chrome&lt;/li>
+&lt;li>python&lt;/li>
+&lt;li>gpg&lt;/li>
+&lt;li>intellij&lt;/li>
+&lt;li>jdk8-openjdk&lt;/li>
+&lt;li>android sdk, ndk&lt;/li>
+&lt;/ul>
+&lt;h2 id="install">Install&lt;/h2>
+&lt;ul>
+&lt;li>Partition disks&lt;/li>
+&lt;li>Format&lt;/li>
+&lt;li>Mount&lt;/li>
+&lt;li>Pacstrap&lt;/li>
+&lt;li>Gen fstab&lt;/li>
+&lt;li>Chroot&lt;/li>
+&lt;li>Network&lt;/li>
+&lt;li>Locale&lt;/li>
+&lt;li>Timezone&lt;/li>
+&lt;li>Add User, sudo&lt;/li>
+&lt;li>Bootloader&lt;/li>
+&lt;li>X11&lt;/li>
+&lt;li>I3&lt;/li>
+&lt;li>Git&lt;/li>
+&lt;li>Tk&lt;/li>
+&lt;li>Yay&lt;/li>
+&lt;li>Fonts / Monaco&lt;/li>
+&lt;li>X Resources&lt;/li>
+&lt;li>Chrome&lt;/li>
+&lt;li>Lastpass&lt;/li>
+&lt;li>Openssh&lt;/li>
+&lt;li>GPG&lt;/li>
+&lt;li>JDK&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -1,0 +1,225 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=robots content="index, follow">
+<link rel="shortcut icon" href=/favicons/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<title>Diffie Hellman | Random Notes</title>
+<meta name=description content="Let&rsquo;s continue our exploration of popular cryptosystems with another
+widely used protocol: The Diffie Hellman (DH) key agreement protocol.
+When …">
+<meta property="og:title" content="Diffie Hellman">
+<meta property="og:description" content="Let&rsquo;s continue our exploration of popular cryptosystems with another widely used protocol: The Diffie Hellman (DH) key agreement protocol.
+When you connect to a https website, you are using the DH protocol. It is how your client, i.e. your web browser negociates a unique encryption key with the server.
+We discussed RSA, a widely used public/private key crypto system and saw how it can be used for encryption if you know the recipient&rsquo;s public key.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cryptoblog21.xyz/docs/crypto/dh/"><meta property="article:section" content="docs">
+<meta property="article:published_time" content="2022-02-18T11:49:09+08:00">
+<meta property="article:modified_time" content="2022-02-18T11:49:09+08:00">
+<meta itemprop=name content="Diffie Hellman">
+<meta itemprop=description content="Let&rsquo;s continue our exploration of popular cryptosystems with another widely used protocol: The Diffie Hellman (DH) key agreement protocol.
+When you connect to a https website, you are using the DH protocol. It is how your client, i.e. your web browser negociates a unique encryption key with the server.
+We discussed RSA, a widely used public/private key crypto system and saw how it can be used for encryption if you know the recipient&rsquo;s public key."><meta itemprop=datePublished content="2022-02-18T11:49:09+08:00">
+<meta itemprop=dateModified content="2022-02-18T11:49:09+08:00">
+<meta itemprop=wordCount content="908">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Diffie Hellman">
+<meta name=twitter:description content="Let&rsquo;s continue our exploration of popular cryptosystems with another widely used protocol: The Diffie Hellman (DH) key agreement protocol.
+When you connect to a https website, you are using the DH protocol. It is how your client, i.e. your web browser negociates a unique encryption key with the server.
+We discussed RSA, a widely used public/private key crypto system and saw how it can be used for encryption if you know the recipient&rsquo;s public key.">
+<link rel=preload href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
+<link href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
+</head>
+<body class=td-page>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+<a class=navbar-brand href=/>
+<span class=navbar-logo></span><span class=font-weight-bold>Random Notes</span>
+</a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+</ul>
+</div>
+<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+<div id=td-sidebar-menu class=td-sidebar__inner>
+<form class="td-sidebar__search d-flex align-items-center">
+<button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
+</button>
+</form>
+<nav class="collapse td-sidebar-nav" id=td-section-nav>
+<ul class="td-sidebar-nav__section pr-md-3 ul-0">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docs-li>
+<a href=/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-docs><span>Crypto Blog</span></a>
+<ul class=ul-1>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docscrypto-li>
+<a href=/docs/crypto/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docscrypto><span>Crypto Related Docs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptoff-li>
+<a href=/docs/crypto/ff/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptoff><span>Finite Fields</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptonp-li>
+<a href=/docs/crypto/np/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptonp><span>Hard Problems?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptorsa-li>
+<a href=/docs/crypto/rsa/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptorsa><span>RSA - Our First Cryptosystem</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-docscryptodh-li>
+<a href=/docs/crypto/dh/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-docscryptodh><span class=td-sidebar-nav-active-item>Diffie Hellman</span></a>
+</li>
+</ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docszkp-li>
+<a href=/docs/zkp/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docszkp><span>Zero Knowledge Proofs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpzkp-overview-li>
+<a href=/docs/zkp/zkp-overview/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpzkp-overview><span>Zero Knowledge Proof Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpapps-li>
+<a href=/docs/zkp/apps/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpapps><span>Applications of ZKP</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+<aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+</div>
+</aside>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<nav aria-label=breadcrumb class=td-breadcrumbs>
+<ol class=breadcrumb>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/>Crypto Blog</a>
+</li>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/crypto/>Crypto Related Docs</a>
+</li>
+<li class="breadcrumb-item active" aria-current=page>
+<a href=https://blog.cryptoblog21.xyz/docs/crypto/dh/>Diffie Hellman</a>
+</li>
+</ol>
+</nav>
+<div class=td-content>
+<h1>Diffie Hellman</h1>
+<header class=article-meta>
+</header>
+<p>Let&rsquo;s continue our exploration of popular cryptosystems with another
+widely used protocol: The Diffie Hellman (DH) key agreement protocol.</p>
+<p>When you connect to a <code>https</code> website, you are using the DH protocol.
+It is how your client, i.e. your web browser negociates a unique encryption
+key with the server.</p>
+<p>We discussed RSA, a widely used public/private key crypto system and saw how it can
+be used for encryption if you know the recipient&rsquo;s public key.</p>
+<p>However, it is not the best algorithm for large documents because RSA is too slow
+and impractical. Instead, a symetric encryption system
+such as AES is used. We will discuss AES in a later post.</p>
+<p>Symetric encryption is much faster and easier to implement
+than Public/Private Key cryptosystems. The later use an abundance of mathematics
+whereas the former operates by shifting and moving bits around.</p>
+<p>All of that
+can be done easily done in hardware (and in software too).</p>
+<p>Therefore, the stream of data exchanged between client and server is better encrypted
+with AES than RSA.</p>
+<p>But there is a problem. How do the client and the server agree on a key without
+communicating it beforehand?</p>
+<p>When you access a website for the first time,
+obviously you never received any data before.
+You can&rsquo;t have a key. And if the server sends you a key, it would be in clear text
+and subject to interception by a malicious third-party.</p>
+<p>How do you get a key when all your messages could be read during transport?</p>
+<p>Let&rsquo;s imagine you have a noisy postman who reads
+all of your mail. In this situation, how can you
+establish a common secret with your destination.
+So that you can start encrypting your messages.</p>
+<p>This is the goal of the Diffie Hellman protocol.</p>
+<p>Let&rsquo;s review.</p>
+<p>We want to connect to a particular destination. Let&rsquo;s say it&rsquo;s a website at <code>example.com</code>.
+This website is registered and we can retrieve a public key. This key
+represents its identity. We trust that in order to get this registration, they had to submit
+some paperwork and the registrar made sure that they are who they claim.</p>
+<p>Now when I want to connect to <code>example.com</code>, I want to be sure that I am connecting to
+whoever has laid claim on that domain, i.e. whoever has registered.</p>
+<p>One way we could do this is to put the responsibility of key maintenance on the registrar.
+When I want to connect, I ask the registrar for a unique key and it generates a unique key for me and <code>example.com</code>. They send the key both to me
+and <code>example.com</code> over a long term secure channel.</p>
+<p>But, if every time someone wanted to connect
+they had to get a new key from the registrar, it would create a lot of work for them.</p>
+<p>It&rsquo;d better to have an algorithm where the <em>only</em> piece of information we need from <code>example.com</code>
+is their public key. DH can do that.</p>
+<p>The mathematics needed to <em>understand</em> DH are quite simple but again this is <strong>not</strong>
+going to prove the safety of DH. It is one thing to create a lock, it is much harder
+to prove that the lock is unpickable.</p>
+<p>DH uses the same group we used for RSA: $(N_p^*, \times)$, i.e. the multiplicative
+group of integers from $\{1, 2, &mldr;, p-1\}$ where $p$ is a (large) prime number.</p>
+<p>If we pick a number $g$, we know from previous video that $\{1, g, g^2, g^3, &mldr;, g^{p-1}\}$
+forms a group.</p>
+<p>Basically, if we associate every number of $N_p^*$ by the formula:</p>
+<p>$$ x \mapsto g^x $$</p>
+<p>We &ldquo;shuffled&rdquo; the numbers of $N_p^*$.</p>
+<p>The most important thing to remember today is that this transformation is <strong>very hard</strong>
+to reverse (in most of the cases). Very hard as in: it&rsquo;s gonna take a billion billion years for
+relatively &ldquo;short&rdquo; $p$ (only a few hundred bits).</p>
+<p>This is called the &ldquo;discrete logarithm problem&rdquo;. The function above was an &ldquo;exponentialization&rdquo;
+because the $x$ is in the exponent. Therefore the reverse is a logarithm. It&rsquo;s a discrete
+logarithm because we want the result to be an integer and not a real number.</p>
+<p>We will assume that solving the discrete logarithm problem is not efficient.</p>
+<p>Now let&rsquo;s see how DH uses it.</p>
+<p>Both server and client agree on a value for $g$. In fact, <em>everyone</em> agrees to use the same value
+as it doesn&rsquo;t matter what value it is.</p>
+<p>The server picks up a secret value $s$ and computes $x = g^s$. He registers $x$ so that anyone
+who wants to communicate with it knows $x$. Yet, the value of $s$ remains private.</p>
+<p>Then the client picks up a new random key, anything in $N_p^*$. Let&rsquo;s call it $s'$.</p>
+<p>He calculates $x' = g^{s'}$ and sends it to the server. This value will be different from any other
+value.</p>
+<p>The server calculates $$S = x'^s = \left(g^{s'}\right)^s = g^{ss'}$$</p>
+<p>On his side, the client calculates
+$$ C = x^{s'} = \left({g^s}\right)^{s'} = g^{ss'} $$</p>
+<p>And because $ss' = s&rsquo;s$, $$C = S$$</p>
+<p>Now, they can use this value as their AES encryption key.</p>
+<p>We can notice that all messages sent between client and server are hiding their true value by putting
+it in $g^x$. If someone intercepts them, he will not be able to extract the value of $x$ by virtue
+of the &ldquo;discrete logarithm problem&rdquo;.</p>
+<p>An entire class of cryptosystems use this property. It&rsquo;s called ElGamal encryption and we will
+see it several times in future sessions.</p>
+</div>
+</main>
+</div>
+</div>
+<footer class="bg-dark py-5 row d-print-none">
+<div class="container-fluid mx-sm-5">
+<div class=row>
+<div class="col-6 col-sm-4 text-xs-center order-sm-2">
+</div>
+<div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+</div>
+<div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
+<script src=/js/tabpane-persist.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ==" crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity="sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==" crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!1,left:"$",right:"$"}]})'></script>
+<script src=/js/main.min.a40bea2c8205737457df31d67ee5bae2224f86dfaec1564036c65ab9f943e910.js integrity="sha256-pAvqLIIFc3RX3zHWfuW64iJPht+uwVZANsZauflD6RA=" crossorigin=anonymous></script>
+</body>
+</html>

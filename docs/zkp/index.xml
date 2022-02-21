@@ -1,0 +1,191 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random Notes – Zero Knowledge Proofs</title><link>https://blog.cryptoblog21.xyz/docs/zkp/</link><description>Recent content in Zero Knowledge Proofs on Random Notes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Feb 2022 22:56:07 +0800</lastBuildDate><atom:link href="https://blog.cryptoblog21.xyz/docs/zkp/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Zero Knowledge Proof Overview</title><link>https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/</link><pubDate>Thu, 10 Feb 2022 11:04:58 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/</guid><description>
+&lt;p>We are going to spend quite some time discussing crypto,
+maths and computer science so it is worth taking some
+time to put things in perspective.&lt;/p>
+&lt;p>We are mostly interested in crypto currencies and
+one of the main valuable properties is &lt;strong>decentralization&lt;/strong>.&lt;/p>
+&lt;h2 id="decentralization">Decentralization&lt;/h2>
+&lt;p>When the system is centralized, there is a main entity
+that oversees the entire management and operation.
+Users implicitly trust this entity since anyway they
+are not in charge of anything and most likely don&amp;rsquo;t
+have access to the records that would allow them to
+perform any verification.&lt;/p>
+&lt;p>However, if the system is decentralized, there are
+several or potentially a very large number of entities
+that together make sure the system operates properly.&lt;/p>
+&lt;p>Moreover some system allow anyone to participate as
+an management entity therefore they cannot be trusted
+because noone is in the position of overseeing their
+honesty.&lt;/p>
+&lt;h2 id="enter-crypto">Enter Crypto&lt;/h2>
+&lt;p>Enter cryptography. Before cryptocurrencies, it was
+mostly about encrypting and decrypting messages
+but there is another very important application of
+cryptography: Authentication.&lt;/p>
+&lt;p>And this was made possible with Public/Private Crypto.&lt;/p>
+&lt;h3 id="publicprivate-crytpo">Public/Private Crytpo&lt;/h3>
+&lt;p>In traditional crypto, you have a key, i.e. a secret
+value that the sender and the receiver both know
+but keep private.&lt;/p>
+&lt;p>The same secret value is used for encrypting and
+decrypting. It is called &lt;em>symetric&lt;/em> crypto.&lt;/p>
+&lt;p>With public/private crypto or &lt;em>asymetric&lt;/em> crypto,
+there are two keys: the secret key and the public key.&lt;/p>
+&lt;p>The public key can be easily derived from the secret key
+but the other way is impossible (or practially impossible
+with current technology for decades).&lt;/p>
+&lt;p>Messages are encrypted with the public key but they
+can only be decrypted with the secret key. With this system,
+the public key can be distributed so that the receiver
+can get encrypted messages from anyone and yet be the
+only person able to read them.&lt;/p>
+&lt;p>That&amp;rsquo;s one of the application of public/private crypto.&lt;/p>
+&lt;p>The other popular application is authentication. These
+crypto system have the ability to be used in &amp;ldquo;reverse&amp;rdquo;:
+Messages are encrypted with the secret key and
+decrypted with the public key. One can prove his identity
+but showing he/she knows the secret key that matches
+a given public key. To do so, he/she encrypts a known
+message with the secret key. When it gets decrypted
+with the public key, we get back the original known message.
+The actual process has more steps but in essence, making a &lt;em>digital
+signature&lt;/em> can be boiled down to this technique.&lt;/p>
+&lt;p>This is a zero knowledge proof.&lt;/p>
+&lt;p>We &lt;strong>proved&lt;/strong> we know the secret key and therefore our identity,
+while not revealing any information that could help other
+parties discover the secret key.&lt;/p>
+&lt;p>Cryptocurrencies are mainly using this form of cryptography
+and very seldom the traditional encryption/decryption.&lt;/p>
+&lt;p>This is because they tend to put the focus on being trustless
+rather than privacy. When you want to be trustless, you want
+to allow anyone to verify your claims. But also, you don&amp;rsquo;t
+want to reveal your secrets. That&amp;rsquo;s why Zero Knowledge Proofs
+are gaining more and more traction.&lt;/p>
+&lt;h2 id="smart-contracts">Smart Contracts&lt;/h2>
+&lt;p>Though authentication or signatures are quite useful and
+are indeed in big part of the cryptocurrencies, i.e. Bitcoin
+only uses digital signatures, there is a push towards extending
+cryptocurrencies to more than tracking account balances.&lt;/p>
+&lt;p>The first cryptocurrency that introduced &amp;ldquo;smart contracts&amp;rdquo; is
+Ethereum. Smart contracts are general programs which are
+executed by many computers. With Bitcoin, computers deal with
+account transactions, which are a specific type of program.&lt;/p>
+&lt;p>An account transaction transfers coins between sources and destinations.
+Whereas a smart contract can be made to do more varied tasks.&lt;/p>
+&lt;h2 id="sudoku-contract">Sudoku contract&lt;/h2>
+&lt;p>Suppose you have a Eth smart contract that implements the rules of Sudoku.
+A puzzle has a set of given digits and the smart contract
+verifies that the submitted solution is correct.
+If it is, the contract could unlock some funds and reward the account
+that submitted the solution.&lt;/p>
+&lt;p>All the computers in the Eth network perform the verification.
+One of the core principle of a crypto currency system is that
+all the participants agree on the same state: Either the solution is
+correct and the funds are paid, or the solution is incorrect and the
+solution is rejected.&lt;/p>
+&lt;p>However, what if the person who found the solution does not want
+to show it. Most likely, since we can&amp;rsquo;t simply trust his word that
+he has a valid solution, he will not get paid.&lt;/p>
+&lt;p>So it&amp;rsquo;s either:&lt;/p>
+&lt;ul>
+&lt;li>show me the solution and get paid, but then the solution is revealed
+to the entire world,&lt;/li>
+&lt;li>keep the solution but don&amp;rsquo;t get paid&lt;/li>
+&lt;/ul>
+&lt;h2 id="zero-knowledge-proofs">Zero Knowledge Proofs&lt;/h2>
+&lt;p>Zero Knowledge Proofs allow someone to prove that he has a solution
+without revealing it.&lt;/p>
+&lt;p>In this hypothetical case, the verifiers are not interested in the solution itself.
+It is very similar to the authentication scenario from earlier where
+we wanted to show that we have the secret key without revealing it.&lt;/p>
+&lt;p>But in this case, this is not an arbitrary key but something that solves
+a specific problem.&lt;/p>
+&lt;p>The beauty of ZKP is that they can be made to show that you have the
+solution to a complex problem, without showing that solution.&lt;/p>
+&lt;p>It could be because the solution has private information, or it
+could also be that the solution is very large.&lt;/p>
+&lt;h2 id="caveats">Caveats&lt;/h2>
+&lt;p>ZKP are fairly new in cryptography and therefore still under a lot of research
+and development. In my opinion, we are experiencing the very early days, kind like the 60s
+were for computers. Though the theory of computer science did not evolve
+significantly, today&amp;rsquo;s computers are at least 10 000 times
+more powerful than the ones from back then. Likewise for ZKP, in theory they could be
+used in many applications, but in practice they are extremely difficult
+to build and exhibiy poor performance issues.&lt;/p>
+&lt;p>It takes a lot of work and skill to properly use a ZKP system, similarly to how
+it was tricky to use the first computers. At that time, due to their limited power and memory,
+only very carefuly crafted software could run.&lt;/p>
+&lt;p>The goal of this series of videos is to gain a moderate understanding of what ZKP
+can do today and what they have in store for the near future.&lt;/p>
+&lt;p>Let&amp;rsquo;s end this overview here. Next time, we will start looking at some of the usage of ZKP
+that are already in production.&lt;/p></description></item><item><title>Docs: Applications of ZKP</title><link>https://blog.cryptoblog21.xyz/docs/zkp/apps/</link><pubDate>Thu, 10 Feb 2022 22:56:07 +0800</pubDate><guid>https://blog.cryptoblog21.xyz/docs/zkp/apps/</guid><description>
+&lt;p>Today we look at some coins that use zk-proofs in
+one way or another.&lt;/p>
+&lt;p>But let&amp;rsquo;s start with what zk-proofs can do.&lt;/p>
+&lt;p>First of all, functions has the same expressive power
+than programs. In other words, any program can be
+converted into a function. For example, if a program
+processes financial transactions and tracks account balances,
+it can be rewritten as a function that returns new account
+balances given current balances and transaction data.&lt;/p>
+&lt;p>Something like:&lt;/p>
+&lt;p>$$ f(\mathrm{inputs}) = \mathrm{outputs} $$&lt;/p>
+&lt;p>where outputs are the new state, usually public.
+Some of the inputs are public, in this example it would be
+the previous account balances and the rest of the inputs are
+secret. $f$ is the ZKP function or sometimes it is called the
+&lt;strong>statement&lt;/strong>.&lt;/p>
+&lt;p>The ZK-Proof proves that you know the secret inputs
+without giving any indication of what they are.&lt;/p>
+&lt;p>Currently, cryptocurrencies use ZK-Proofs in a few
+ways.&lt;/p>
+&lt;h2 id="l2-zk-rollups">L2 ZK-Rollups&lt;/h2>
+&lt;p>Previously, we talked about smart contracts. Ethereum is
+famously the first cryptocurrency to introduce them. They
+gained a lot of popularity and as a result the number of
+transactions on the Ethereum blockchain grew significantly.
+Along with it, transaction fees also increased. To a point
+that it is no longer economical to directly call smart
+contracts on Ethereum.&lt;/p>
+&lt;p>A few teams work on reducing the strain on the blockchain (that&amp;rsquo;s layer 1)
+by transmitting and executing transactions off chain (that&amp;rsquo;s layer 2).
+ZKP are used in some of the Layer-2 solutions in order to
+allow verification by smart contracts on the Layer 1. Ethereum has a few
+of them: ZkSync, Aztec and Starkware.&lt;/p>
+&lt;p>A normal rollup contract is deployed on Ethereum. It
+verifies the validity of the zk proofs. Transactions
+are processed off-chain.
+Multiple transactions can be grouped, processed together
+and submit a single zk proof on Ethereum.&lt;/p>
+&lt;p>Recently Polygon announced Miden, a rollup project for
+Ethereum VM.&lt;/p>
+&lt;h2 id="privacy-coins">Privacy Coins&lt;/h2>
+&lt;p>Privacy coins such as Zcash, Monero or Firo hide information
+about transactions. Zcash encrypts all the amount and address
+of the party involved. Monero mixes the real sender and receiver
+with unrelated notes. In all cases, ZKP
+are used to prove that the transaction remains valid.&lt;/p>
+&lt;h2 id="succint-blockchain">Succint Blockchain&lt;/h2>
+&lt;p>Finally, the last coin we are considering today is
+Mina (Protocol). They use ZKP to enable a fixed size
+blockchain. For any other coin, the blockchain is
+formed by chaining a series of blocks (hence the name).
+Even if the data that ends up on chain is kept to a minimum
+with Layer 2 systems, by nature the blockchain
+grows indefinitively as more and more blocks are produced.&lt;/p>
+&lt;p>In Mina Protocol, the history, i.e. the previous blockchain
+data serves as a hidden (or secret) input to the ZKP
+function. Essentially, the statement means:
+&amp;ldquo;I know a previous blockchain history and a series
+of valid transactions, such as together they produce
+this new block, and here&amp;rsquo;s the proof.&amp;rdquo;
+Since the proof is part of the block, we have an instance
+of a recursive ZKP because the ZKP is an input and
+the function verifies its validity among other things.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>Here you have it. A few concrete examples of usage
+of ZKP in production blockchains. I am sure there are
+going to be many more projects using ZKP. The proving
+systems keep getting better and better, and they
+become more accessible to the non-experts.&lt;/p></description></item></channel></rss>

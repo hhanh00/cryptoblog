@@ -1,0 +1,238 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=robots content="index, follow">
+<link rel="shortcut icon" href=/favicons/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<title>Finite Fields | Random Notes</title>
+<meta name=description content="In one of the previous posts, we discussed finite sets: Sets with
+a non infinite number of elements.
+We also talked about functions from sets to sets …">
+<meta property="og:title" content="Finite Fields">
+<meta property="og:description" content="In one of the previous posts, we discussed finite sets: Sets with a non infinite number of elements.
+We also talked about functions from sets to sets and a particular type of function that is quite useful, the 1 to 1 functions. They map each element from the source set to exactly unique one element of the destination set and vice-versa.
+We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is the number of elements of the set.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cryptoblog21.xyz/docs/crypto/ff/"><meta property="article:section" content="docs">
+<meta property="article:published_time" content="2022-02-12T21:01:42+08:00">
+<meta property="article:modified_time" content="2022-02-12T21:01:42+08:00">
+<meta itemprop=name content="Finite Fields">
+<meta itemprop=description content="In one of the previous posts, we discussed finite sets: Sets with a non infinite number of elements.
+We also talked about functions from sets to sets and a particular type of function that is quite useful, the 1 to 1 functions. They map each element from the source set to exactly unique one element of the destination set and vice-versa.
+We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is the number of elements of the set."><meta itemprop=datePublished content="2022-02-12T21:01:42+08:00">
+<meta itemprop=dateModified content="2022-02-12T21:01:42+08:00">
+<meta itemprop=wordCount content="774">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Finite Fields">
+<meta name=twitter:description content="In one of the previous posts, we discussed finite sets: Sets with a non infinite number of elements.
+We also talked about functions from sets to sets and a particular type of function that is quite useful, the 1 to 1 functions. They map each element from the source set to exactly unique one element of the destination set and vice-versa.
+We can map any finite set to the set of integers from 0 to $n-1$, where $n$ is the number of elements of the set.">
+<link rel=preload href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
+<link href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
+</head>
+<body class=td-page>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+<a class=navbar-brand href=/>
+<span class=navbar-logo></span><span class=font-weight-bold>Random Notes</span>
+</a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+</ul>
+</div>
+<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+<div id=td-sidebar-menu class=td-sidebar__inner>
+<form class="td-sidebar__search d-flex align-items-center">
+<button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
+</button>
+</form>
+<nav class="collapse td-sidebar-nav" id=td-section-nav>
+<ul class="td-sidebar-nav__section pr-md-3 ul-0">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docs-li>
+<a href=/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-docs><span>Crypto Blog</span></a>
+<ul class=ul-1>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docscrypto-li>
+<a href=/docs/crypto/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docscrypto><span>Crypto Related Docs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-docscryptoff-li>
+<a href=/docs/crypto/ff/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-docscryptoff><span class=td-sidebar-nav-active-item>Finite Fields</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptonp-li>
+<a href=/docs/crypto/np/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptonp><span>Hard Problems?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptorsa-li>
+<a href=/docs/crypto/rsa/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptorsa><span>RSA - Our First Cryptosystem</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptodh-li>
+<a href=/docs/crypto/dh/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptodh><span>Diffie Hellman</span></a>
+</li>
+</ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docszkp-li>
+<a href=/docs/zkp/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docszkp><span>Zero Knowledge Proofs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpzkp-overview-li>
+<a href=/docs/zkp/zkp-overview/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpzkp-overview><span>Zero Knowledge Proof Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpapps-li>
+<a href=/docs/zkp/apps/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpapps><span>Applications of ZKP</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+<aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+</div>
+<div class=td-toc><nav id=TableOfContents>
+<ul>
+<li><a href=#groups>Groups</a></li>
+<li><a href=#commutative-group>Commutative Group</a></li>
+<li><a href=#sub-group>Sub-Group</a></li>
+<li><a href=#fields>Fields</a></li>
+</ul>
+</nav></div>
+</aside>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<nav aria-label=breadcrumb class=td-breadcrumbs>
+<ol class=breadcrumb>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/>Crypto Blog</a>
+</li>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/crypto/>Crypto Related Docs</a>
+</li>
+<li class="breadcrumb-item active" aria-current=page>
+<a href=https://blog.cryptoblog21.xyz/docs/crypto/ff/>Finite Fields</a>
+</li>
+</ol>
+</nav>
+<div class=td-content>
+<h1>Finite Fields</h1>
+<header class=article-meta>
+</header>
+<p>In one of the previous posts, we discussed finite sets: Sets with
+a non infinite number of elements.</p>
+<p>We also talked about functions from sets to sets and a particular
+type of function that is quite useful, the 1 to 1 functions.
+They map each element from the source set to exactly unique one element of
+the destination set and vice-versa.</p>
+<p>We can map any finite set to the set of integers from 0 to $n-1$,
+where $n$ is the number of elements of the set. It can be done by
+simply labeling elements as &ldquo;first&rdquo;, &ldquo;second&rdquo;, &ldquo;third&rdquo;, etc.</p>
+<p>From now on, we will only be interested in these finite sets: $N_p = [0, \dots, n-1]$</p>
+<p>In it, we can define the classic addition and multiplication. The only difference is that
+since the result exceeds must be in the set, we subtract or add multiples of $n$ until it does.</p>
+<p>For example, if $n = 60$,</p>
+<p>\begin{align}
+10 + 20 & = 30 \pmod{60} \\
+45 + 15 & = 0 \pmod{60} \\
+45 + 30 & = 15 \pmod{60} \\
+45 + 45 & = 30 \pmod{60} \\
+\end{align}</p>
+<p>The $\pmod{60}$ indicates that we are doing arithmetic <strong>modulo</strong> 60.</p>
+<p>You probably have recognized the behavior of minutes in the hour.</p>
+<p>Multiplication works the same way:</p>
+<p>\begin{align}
+5 \times 10 & = 50 \pmod{60} \\
+10 \times 20 & = 20 \pmod{60} \\
+\end{align}</p>
+<p>The last one is because $ 10 \times 20 = 200 = 180 + 20 = 60 \times 3 + 20 $. Multiples of 60 are discarded,
+so the result is $20$.</p>
+<h2 id=groups>Groups</h2>
+<p>$N_p$ with the + operator, form an algebric group: $(N_p, +)$. Because together they have a set of properties:</p>
+<ul>
+<li>there is neutral element: $0$,</li>
+<li>$+$ is associative: $(a + b) + c = a + (b + c)$,</li>
+<li>every element has an opposite: $a + (-a) = (-a) + a = 0$</li>
+</ul>
+<p>These properties come from the underlying $+$ (the one that works in $N$).
+The only remaining property to have is that $ a + b $ belongs to $N_p$.</p>
+<h2 id=commutative-group>Commutative Group</h2>
+<p>If in $+$ also commutes, i.e, if $ a + b = b + a $, then $(N_p, +)$ is a commutative group.</p>
+<h2 id=sub-group>Sub-Group</h2>
+<p>$N_p$ can also contain groups that are made of elements of $N_p$. Such a group is called
+a sub-group.</p>
+<p>It&rsquo;s not always the case, but for instance can you find sub-groups of $N_{60}$ ?</p>
+<p>If instead of taking every element of $N_{60}$, we take only $0, 10, 20, 30, 40, 50$
+we have a sub-group.</p>
+<p>The three properties above are clearly still met and we can also see that
+whenever we add 2 of these numbers, the result is still among these numbers.</p>
+<p>Can you find more sub-groups?</p>
+<p>Yes, in fact any divider of 60 forms a sub-group: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30.</p>
+<h2 id=fields>Fields</h2>
+<p>Let&rsquo;s now consider the multiplication in combination with the addition.</p>
+<p>$(N_p, +, \times)$</p>
+<p>For this to be field,</p>
+<ul>
+<li>$(N_p, +)$ is a commutative group with neutral element $0$,</li>
+<li>$(N_p^*, \times)$ is a commutative group with neutral element $1$,</li>
+<li>$\times$ distributes over $+$: $(a + b) \times c = a \times c + b \times c$</li>
+</ul>
+<p>Again, nothing very special <strong>but</strong> this time $N_p$ is not always a field.
+The problem is that the multiplicative inverse may not exist for every element of $N_p$.</p>
+<p>The smallest integer field is $F_2$ which only contains {0, 1}. $F_3$ is also a field.
+$2$ is its own inverse.</p>
+<p>$$ 2 \times 2 = 4 = 1 \mod 3 $$</p>
+<p>$F_4$ and $F_5$ are fields too. But $N_6$ is not a field. Because $2$ has no inverse.</p>
+<p>\begin{align}
+2 \times 1 &= 2\pmod 6 \\
+2 \times 2 &= 4\pmod 6 \\
+2 \times 3 &= 6 = 0\pmod 6 \\
+2 \times 4 &= 8 = 2\pmod 6 \\
+2 \times 5 &= 6 = 4\pmod 6 \\
+\end{align}</p>
+<p>When the size of the set is even and $> 2$, ($2x \mod n)$ will be an even number for any value
+of $x$. Therefore it cannot be equal to 1 and 2 has no inverse.</p>
+<p>In fact, $p$ must be a prime number or a power of a prime number.</p>
+<p>When $N_p$ is a field, the convention is to use the letter F: $F_p$.</p>
+<p>All the calculations in cryptography are performed in a finite field $F_p$.
+$p$ is a very large prime number. For Bitcoin, $p$ is</p>
+<p>\begin{align}
+p & = 2^{256} - 2^{32} - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1 \\
+& = 1157920892373161954235709850086879078
+&mldr;\\
+& &mldr;53269984665640564039457584007908834671663 \\
+\end{align}</p>
+</div>
+</main>
+</div>
+</div>
+<footer class="bg-dark py-5 row d-print-none">
+<div class="container-fluid mx-sm-5">
+<div class=row>
+<div class="col-6 col-sm-4 text-xs-center order-sm-2">
+</div>
+<div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+</div>
+<div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
+<script src=/js/tabpane-persist.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ==" crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity="sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==" crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!1,left:"$",right:"$"}]})'></script>
+<script src=/js/main.min.a40bea2c8205737457df31d67ee5bae2224f86dfaec1564036c65ab9f943e910.js integrity="sha256-pAvqLIIFc3RX3zHWfuW64iJPht+uwVZANsZauflD6RA=" crossorigin=anonymous></script>
+</body>
+</html>

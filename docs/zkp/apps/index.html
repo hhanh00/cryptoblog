@@ -1,0 +1,225 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=robots content="index, follow">
+<link rel="shortcut icon" href=/favicons/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<title>Applications of ZKP | Random Notes</title>
+<meta name=description content="Today we look at some coins that use zk-proofs in
+one way or another.
+But let&rsquo;s start with what zk-proofs can do.
+First of all, functions has …">
+<meta property="og:title" content="Applications of ZKP">
+<meta property="og:description" content="Today we look at some coins that use zk-proofs in one way or another.
+But let&rsquo;s start with what zk-proofs can do.
+First of all, functions has the same expressive power than programs. In other words, any program can be converted into a function. For example, if a program processes financial transactions and tracks account balances, it can be rewritten as a function that returns new account balances given current balances and transaction data.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cryptoblog21.xyz/docs/zkp/apps/"><meta property="article:section" content="docs">
+<meta property="article:published_time" content="2022-02-10T22:56:07+08:00">
+<meta property="article:modified_time" content="2022-02-10T22:56:07+08:00">
+<meta itemprop=name content="Applications of ZKP">
+<meta itemprop=description content="Today we look at some coins that use zk-proofs in one way or another.
+But let&rsquo;s start with what zk-proofs can do.
+First of all, functions has the same expressive power than programs. In other words, any program can be converted into a function. For example, if a program processes financial transactions and tracks account balances, it can be rewritten as a function that returns new account balances given current balances and transaction data."><meta itemprop=datePublished content="2022-02-10T22:56:07+08:00">
+<meta itemprop=dateModified content="2022-02-10T22:56:07+08:00">
+<meta itemprop=wordCount content="553">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Applications of ZKP">
+<meta name=twitter:description content="Today we look at some coins that use zk-proofs in one way or another.
+But let&rsquo;s start with what zk-proofs can do.
+First of all, functions has the same expressive power than programs. In other words, any program can be converted into a function. For example, if a program processes financial transactions and tracks account balances, it can be rewritten as a function that returns new account balances given current balances and transaction data.">
+<link rel=preload href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
+<link href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
+</head>
+<body class=td-page>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+<a class=navbar-brand href=/>
+<span class=navbar-logo></span><span class=font-weight-bold>Random Notes</span>
+</a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+</ul>
+</div>
+<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+<div id=td-sidebar-menu class=td-sidebar__inner>
+<form class="td-sidebar__search d-flex align-items-center">
+<button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
+</button>
+</form>
+<nav class="collapse td-sidebar-nav" id=td-section-nav>
+<ul class="td-sidebar-nav__section pr-md-3 ul-0">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docs-li>
+<a href=/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-docs><span>Crypto Blog</span></a>
+<ul class=ul-1>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docscrypto-li>
+<a href=/docs/crypto/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docscrypto><span>Crypto Related Docs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptoff-li>
+<a href=/docs/crypto/ff/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptoff><span>Finite Fields</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptonp-li>
+<a href=/docs/crypto/np/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptonp><span>Hard Problems?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptorsa-li>
+<a href=/docs/crypto/rsa/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptorsa><span>RSA - Our First Cryptosystem</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptodh-li>
+<a href=/docs/crypto/dh/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptodh><span>Diffie Hellman</span></a>
+</li>
+</ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docszkp-li>
+<a href=/docs/zkp/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docszkp><span>Zero Knowledge Proofs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpzkp-overview-li>
+<a href=/docs/zkp/zkp-overview/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpzkp-overview><span>Zero Knowledge Proof Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-docszkpapps-li>
+<a href=/docs/zkp/apps/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-docszkpapps><span class=td-sidebar-nav-active-item>Applications of ZKP</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+<aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+</div>
+<div class=td-toc><nav id=TableOfContents>
+<ul>
+<li><a href=#l2-zk-rollups>L2 ZK-Rollups</a></li>
+<li><a href=#privacy-coins>Privacy Coins</a></li>
+<li><a href=#succint-blockchain>Succint Blockchain</a></li>
+<li><a href=#conclusion>Conclusion</a></li>
+</ul>
+</nav></div>
+</aside>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<nav aria-label=breadcrumb class=td-breadcrumbs>
+<ol class=breadcrumb>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/>Crypto Blog</a>
+</li>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/zkp/>Zero Knowledge Proofs</a>
+</li>
+<li class="breadcrumb-item active" aria-current=page>
+<a href=https://blog.cryptoblog21.xyz/docs/zkp/apps/>Applications of ZKP</a>
+</li>
+</ol>
+</nav>
+<div class=td-content>
+<h1>Applications of ZKP</h1>
+<header class=article-meta>
+</header>
+<p>Today we look at some coins that use zk-proofs in
+one way or another.</p>
+<p>But let&rsquo;s start with what zk-proofs can do.</p>
+<p>First of all, functions has the same expressive power
+than programs. In other words, any program can be
+converted into a function. For example, if a program
+processes financial transactions and tracks account balances,
+it can be rewritten as a function that returns new account
+balances given current balances and transaction data.</p>
+<p>Something like:</p>
+<p>$$ f(\mathrm{inputs}) = \mathrm{outputs} $$</p>
+<p>where outputs are the new state, usually public.
+Some of the inputs are public, in this example it would be
+the previous account balances and the rest of the inputs are
+secret. $f$ is the ZKP function or sometimes it is called the
+<strong>statement</strong>.</p>
+<p>The ZK-Proof proves that you know the secret inputs
+without giving any indication of what they are.</p>
+<p>Currently, cryptocurrencies use ZK-Proofs in a few
+ways.</p>
+<h2 id=l2-zk-rollups>L2 ZK-Rollups</h2>
+<p>Previously, we talked about smart contracts. Ethereum is
+famously the first cryptocurrency to introduce them. They
+gained a lot of popularity and as a result the number of
+transactions on the Ethereum blockchain grew significantly.
+Along with it, transaction fees also increased. To a point
+that it is no longer economical to directly call smart
+contracts on Ethereum.</p>
+<p>A few teams work on reducing the strain on the blockchain (that&rsquo;s layer 1)
+by transmitting and executing transactions off chain (that&rsquo;s layer 2).
+ZKP are used in some of the Layer-2 solutions in order to
+allow verification by smart contracts on the Layer 1. Ethereum has a few
+of them: ZkSync, Aztec and Starkware.</p>
+<p>A normal rollup contract is deployed on Ethereum. It
+verifies the validity of the zk proofs. Transactions
+are processed off-chain.
+Multiple transactions can be grouped, processed together
+and submit a single zk proof on Ethereum.</p>
+<p>Recently Polygon announced Miden, a rollup project for
+Ethereum VM.</p>
+<h2 id=privacy-coins>Privacy Coins</h2>
+<p>Privacy coins such as Zcash, Monero or Firo hide information
+about transactions. Zcash encrypts all the amount and address
+of the party involved. Monero mixes the real sender and receiver
+with unrelated notes. In all cases, ZKP
+are used to prove that the transaction remains valid.</p>
+<h2 id=succint-blockchain>Succint Blockchain</h2>
+<p>Finally, the last coin we are considering today is
+Mina (Protocol). They use ZKP to enable a fixed size
+blockchain. For any other coin, the blockchain is
+formed by chaining a series of blocks (hence the name).
+Even if the data that ends up on chain is kept to a minimum
+with Layer 2 systems, by nature the blockchain
+grows indefinitively as more and more blocks are produced.</p>
+<p>In Mina Protocol, the history, i.e. the previous blockchain
+data serves as a hidden (or secret) input to the ZKP
+function. Essentially, the statement means:
+&ldquo;I know a previous blockchain history and a series
+of valid transactions, such as together they produce
+this new block, and here&rsquo;s the proof.&rdquo;
+Since the proof is part of the block, we have an instance
+of a recursive ZKP because the ZKP is an input and
+the function verifies its validity among other things.</p>
+<h2 id=conclusion>Conclusion</h2>
+<p>Here you have it. A few concrete examples of usage
+of ZKP in production blockchains. I am sure there are
+going to be many more projects using ZKP. The proving
+systems keep getting better and better, and they
+become more accessible to the non-experts.</p>
+</div>
+</main>
+</div>
+</div>
+<footer class="bg-dark py-5 row d-print-none">
+<div class="container-fluid mx-sm-5">
+<div class=row>
+<div class="col-6 col-sm-4 text-xs-center order-sm-2">
+</div>
+<div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+</div>
+<div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
+<script src=/js/tabpane-persist.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ==" crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity="sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==" crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!1,left:"$",right:"$"}]})'></script>
+<script src=/js/main.min.a40bea2c8205737457df31d67ee5bae2224f86dfaec1564036c65ab9f943e910.js integrity="sha256-pAvqLIIFc3RX3zHWfuW64iJPht+uwVZANsZauflD6RA=" crossorigin=anonymous></script>
+</body>
+</html>

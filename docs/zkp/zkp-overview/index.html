@@ -1,0 +1,283 @@
+<!doctype html><html lang=en class=no-js>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=generator content="Hugo 0.91.2">
+<meta name=robots content="index, follow">
+<link rel="shortcut icon" href=/favicons/favicon.ico>
+<link rel=apple-touch-icon href=/favicons/apple-touch-icon-180x180.png sizes=180x180>
+<link rel=icon type=image/png href=/favicons/favicon-16x16.png sizes=16x16>
+<link rel=icon type=image/png href=/favicons/favicon-32x32.png sizes=32x32>
+<link rel=icon type=image/png href=/favicons/android-36x36.png sizes=36x36>
+<link rel=icon type=image/png href=/favicons/android-48x48.png sizes=48x48>
+<link rel=icon type=image/png href=/favicons/android-72x72.png sizes=72x72>
+<link rel=icon type=image/png href=/favicons/android-96x96.png sizes=96x96>
+<link rel=icon type=image/png href=/favicons/android-144x144.png sizes=144x144>
+<link rel=icon type=image/png href=/favicons/android-192x192.png sizes=192x192>
+<title>Zero Knowledge Proof Overview | Random Notes</title>
+<meta name=description content="We are going to spend quite some time discussing crypto,
+maths and computer science so it is worth taking some
+time to put things in perspective.
+We …">
+<meta property="og:title" content="Zero Knowledge Proof Overview">
+<meta property="og:description" content="We are going to spend quite some time discussing crypto, maths and computer science so it is worth taking some time to put things in perspective.
+We are mostly interested in crypto currencies and one of the main valuable properties is decentralization.
+Decentralization When the system is centralized, there is a main entity that oversees the entire management and operation. Users implicitly trust this entity since anyway they are not in charge of anything and most likely don&rsquo;t have access to the records that would allow them to perform any verification.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/"><meta property="article:section" content="docs">
+<meta property="article:published_time" content="2022-02-10T11:04:58+08:00">
+<meta property="article:modified_time" content="2022-02-10T11:04:58+08:00">
+<meta itemprop=name content="Zero Knowledge Proof Overview">
+<meta itemprop=description content="We are going to spend quite some time discussing crypto, maths and computer science so it is worth taking some time to put things in perspective.
+We are mostly interested in crypto currencies and one of the main valuable properties is decentralization.
+Decentralization When the system is centralized, there is a main entity that oversees the entire management and operation. Users implicitly trust this entity since anyway they are not in charge of anything and most likely don&rsquo;t have access to the records that would allow them to perform any verification."><meta itemprop=datePublished content="2022-02-10T11:04:58+08:00">
+<meta itemprop=dateModified content="2022-02-10T11:04:58+08:00">
+<meta itemprop=wordCount content="1051">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Zero Knowledge Proof Overview">
+<meta name=twitter:description content="We are going to spend quite some time discussing crypto, maths and computer science so it is worth taking some time to put things in perspective.
+We are mostly interested in crypto currencies and one of the main valuable properties is decentralization.
+Decentralization When the system is centralized, there is a main entity that oversees the entire management and operation. Users implicitly trust this entity since anyway they are not in charge of anything and most likely don&rsquo;t have access to the records that would allow them to perform any verification.">
+<link rel=preload href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css as=style>
+<link href=/scss/main.min.209ee91954d0f2f182770e6c71011a5580360636bcf2a9bcf7f1c3da478784ff.css rel=stylesheet integrity>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js integrity=sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK crossorigin=anonymous></script>
+</head>
+<body class=td-page>
+<header>
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+<a class=navbar-brand href=/>
+<span class=navbar-logo></span><span class=font-weight-bold>Random Notes</span>
+</a>
+<div class="td-navbar-nav-scroll ml-md-auto" id=main_navbar>
+<ul class="navbar-nav mt-2 mt-lg-0">
+</ul>
+</div>
+<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+</header>
+<div class="container-fluid td-outer">
+<div class=td-main>
+<div class="row flex-xl-nowrap">
+<aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+<div id=td-sidebar-menu class=td-sidebar__inner>
+<form class="td-sidebar__search d-flex align-items-center">
+<button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type=button data-toggle=collapse data-target=#td-section-nav aria-controls=td-docs-nav aria-expanded=false aria-label="Toggle section navigation">
+</button>
+</form>
+<nav class="collapse td-sidebar-nav" id=td-section-nav>
+<ul class="td-sidebar-nav__section pr-md-3 ul-0">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docs-li>
+<a href=/docs/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id=m-docs><span>Crypto Blog</span></a>
+<ul class=ul-1>
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id=m-docscrypto-li>
+<a href=/docs/crypto/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docscrypto><span>Crypto Related Docs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptoff-li>
+<a href=/docs/crypto/ff/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptoff><span>Finite Fields</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptonp-li>
+<a href=/docs/crypto/np/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptonp><span>Hard Problems?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptorsa-li>
+<a href=/docs/crypto/rsa/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptorsa><span>RSA - Our First Cryptosystem</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docscryptodh-li>
+<a href=/docs/crypto/dh/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docscryptodh><span>Diffie Hellman</span></a>
+</li>
+</ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id=m-docszkp-li>
+<a href=/docs/zkp/ class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id=m-docszkp><span>Zero Knowledge Proofs</span></a>
+<ul class="ul-2 foldable">
+<li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id=m-docszkpzkp-overview-li>
+<a href=/docs/zkp/zkp-overview/ class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id=m-docszkpzkp-overview><span class=td-sidebar-nav-active-item>Zero Knowledge Proof Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id=m-docszkpapps-li>
+<a href=/docs/zkp/apps/ class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id=m-docszkpapps><span>Applications of ZKP</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+<aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+</div>
+<div class=td-toc><nav id=TableOfContents>
+<ul>
+<li><a href=#decentralization>Decentralization</a></li>
+<li><a href=#enter-crypto>Enter Crypto</a>
+<ul>
+<li><a href=#publicprivate-crytpo>Public/Private Crytpo</a></li>
+</ul>
+</li>
+<li><a href=#smart-contracts>Smart Contracts</a></li>
+<li><a href=#sudoku-contract>Sudoku contract</a></li>
+<li><a href=#zero-knowledge-proofs>Zero Knowledge Proofs</a></li>
+<li><a href=#caveats>Caveats</a></li>
+</ul>
+</nav></div>
+</aside>
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role=main>
+<nav aria-label=breadcrumb class=td-breadcrumbs>
+<ol class=breadcrumb>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/>Crypto Blog</a>
+</li>
+<li class=breadcrumb-item>
+<a href=https://blog.cryptoblog21.xyz/docs/zkp/>Zero Knowledge Proofs</a>
+</li>
+<li class="breadcrumb-item active" aria-current=page>
+<a href=https://blog.cryptoblog21.xyz/docs/zkp/zkp-overview/>Zero Knowledge Proof Overview</a>
+</li>
+</ol>
+</nav>
+<div class=td-content>
+<h1>Zero Knowledge Proof Overview</h1>
+<header class=article-meta>
+</header>
+<p>We are going to spend quite some time discussing crypto,
+maths and computer science so it is worth taking some
+time to put things in perspective.</p>
+<p>We are mostly interested in crypto currencies and
+one of the main valuable properties is <strong>decentralization</strong>.</p>
+<h2 id=decentralization>Decentralization</h2>
+<p>When the system is centralized, there is a main entity
+that oversees the entire management and operation.
+Users implicitly trust this entity since anyway they
+are not in charge of anything and most likely don&rsquo;t
+have access to the records that would allow them to
+perform any verification.</p>
+<p>However, if the system is decentralized, there are
+several or potentially a very large number of entities
+that together make sure the system operates properly.</p>
+<p>Moreover some system allow anyone to participate as
+an management entity therefore they cannot be trusted
+because noone is in the position of overseeing their
+honesty.</p>
+<h2 id=enter-crypto>Enter Crypto</h2>
+<p>Enter cryptography. Before cryptocurrencies, it was
+mostly about encrypting and decrypting messages
+but there is another very important application of
+cryptography: Authentication.</p>
+<p>And this was made possible with Public/Private Crypto.</p>
+<h3 id=publicprivate-crytpo>Public/Private Crytpo</h3>
+<p>In traditional crypto, you have a key, i.e. a secret
+value that the sender and the receiver both know
+but keep private.</p>
+<p>The same secret value is used for encrypting and
+decrypting. It is called <em>symetric</em> crypto.</p>
+<p>With public/private crypto or <em>asymetric</em> crypto,
+there are two keys: the secret key and the public key.</p>
+<p>The public key can be easily derived from the secret key
+but the other way is impossible (or practially impossible
+with current technology for decades).</p>
+<p>Messages are encrypted with the public key but they
+can only be decrypted with the secret key. With this system,
+the public key can be distributed so that the receiver
+can get encrypted messages from anyone and yet be the
+only person able to read them.</p>
+<p>That&rsquo;s one of the application of public/private crypto.</p>
+<p>The other popular application is authentication. These
+crypto system have the ability to be used in &ldquo;reverse&rdquo;:
+Messages are encrypted with the secret key and
+decrypted with the public key. One can prove his identity
+but showing he/she knows the secret key that matches
+a given public key. To do so, he/she encrypts a known
+message with the secret key. When it gets decrypted
+with the public key, we get back the original known message.
+The actual process has more steps but in essence, making a <em>digital
+signature</em> can be boiled down to this technique.</p>
+<p>This is a zero knowledge proof.</p>
+<p>We <strong>proved</strong> we know the secret key and therefore our identity,
+while not revealing any information that could help other
+parties discover the secret key.</p>
+<p>Cryptocurrencies are mainly using this form of cryptography
+and very seldom the traditional encryption/decryption.</p>
+<p>This is because they tend to put the focus on being trustless
+rather than privacy. When you want to be trustless, you want
+to allow anyone to verify your claims. But also, you don&rsquo;t
+want to reveal your secrets. That&rsquo;s why Zero Knowledge Proofs
+are gaining more and more traction.</p>
+<h2 id=smart-contracts>Smart Contracts</h2>
+<p>Though authentication or signatures are quite useful and
+are indeed in big part of the cryptocurrencies, i.e. Bitcoin
+only uses digital signatures, there is a push towards extending
+cryptocurrencies to more than tracking account balances.</p>
+<p>The first cryptocurrency that introduced &ldquo;smart contracts&rdquo; is
+Ethereum. Smart contracts are general programs which are
+executed by many computers. With Bitcoin, computers deal with
+account transactions, which are a specific type of program.</p>
+<p>An account transaction transfers coins between sources and destinations.
+Whereas a smart contract can be made to do more varied tasks.</p>
+<h2 id=sudoku-contract>Sudoku contract</h2>
+<p>Suppose you have a Eth smart contract that implements the rules of Sudoku.
+A puzzle has a set of given digits and the smart contract
+verifies that the submitted solution is correct.
+If it is, the contract could unlock some funds and reward the account
+that submitted the solution.</p>
+<p>All the computers in the Eth network perform the verification.
+One of the core principle of a crypto currency system is that
+all the participants agree on the same state: Either the solution is
+correct and the funds are paid, or the solution is incorrect and the
+solution is rejected.</p>
+<p>However, what if the person who found the solution does not want
+to show it. Most likely, since we can&rsquo;t simply trust his word that
+he has a valid solution, he will not get paid.</p>
+<p>So it&rsquo;s either:</p>
+<ul>
+<li>show me the solution and get paid, but then the solution is revealed
+to the entire world,</li>
+<li>keep the solution but don&rsquo;t get paid</li>
+</ul>
+<h2 id=zero-knowledge-proofs>Zero Knowledge Proofs</h2>
+<p>Zero Knowledge Proofs allow someone to prove that he has a solution
+without revealing it.</p>
+<p>In this hypothetical case, the verifiers are not interested in the solution itself.
+It is very similar to the authentication scenario from earlier where
+we wanted to show that we have the secret key without revealing it.</p>
+<p>But in this case, this is not an arbitrary key but something that solves
+a specific problem.</p>
+<p>The beauty of ZKP is that they can be made to show that you have the
+solution to a complex problem, without showing that solution.</p>
+<p>It could be because the solution has private information, or it
+could also be that the solution is very large.</p>
+<h2 id=caveats>Caveats</h2>
+<p>ZKP are fairly new in cryptography and therefore still under a lot of research
+and development. In my opinion, we are experiencing the very early days, kind like the 60s
+were for computers. Though the theory of computer science did not evolve
+significantly, today&rsquo;s computers are at least 10 000 times
+more powerful than the ones from back then. Likewise for ZKP, in theory they could be
+used in many applications, but in practice they are extremely difficult
+to build and exhibiy poor performance issues.</p>
+<p>It takes a lot of work and skill to properly use a ZKP system, similarly to how
+it was tricky to use the first computers. At that time, due to their limited power and memory,
+only very carefuly crafted software could run.</p>
+<p>The goal of this series of videos is to gain a moderate understanding of what ZKP
+can do today and what they have in store for the near future.</p>
+<p>Let&rsquo;s end this overview here. Next time, we will start looking at some of the usage of ZKP
+that are already in production.</p>
+</div>
+</main>
+</div>
+</div>
+<footer class="bg-dark py-5 row d-print-none">
+<div class="container-fluid mx-sm-5">
+<div class=row>
+<div class="col-6 col-sm-4 text-xs-center order-sm-2">
+</div>
+<div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+</div>
+<div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js integrity=sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin=anonymous></script>
+<script src=/js/tabpane-persist.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity="sha512-vJqxkZ+Sugf/6WRlpcxN01qVfX/29hF6qc33eHF1va3NgoV+U+wCi+uTAsQ10sDoGyBxHLdaHvGwDlV3yVYboA==" crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity="sha512-5ufNcHqOYgilGEHPfuRIQ5B/vDS1M8+UC+DESZ5CwVgGTg+b2Ol/15rYL/GiCWJ/Sx8oVo0FPFok1dPk8U9INQ==" crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity="sha512-ZA/RPrAo88DlwRnnoNVqKINnQNcWERzRK03PDaA4GIJiVZvGFIWQbdWCsUebMZfkWohnfngsDjXzU6PokO4jGw==" crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!1,left:"$",right:"$"}]})'></script>
+<script src=/js/main.min.a40bea2c8205737457df31d67ee5bae2224f86dfaec1564036c65ab9f943e910.js integrity="sha256-pAvqLIIFc3RX3zHWfuW64iJPht+uwVZANsZauflD6RA=" crossorigin=anonymous></script>
+</body>
+</html>
