@@ -1,4 +1,5 @@
-baseURL = 'https://blog.cryptoblog21.xyz/'
+# baseURL = 'https://blog.cryptoblog21.xyz/'
+baseURL = 'https://hhanh00.github.io/cryptoblog/'
 languageCode = 'en-us'
 title = 'Random Notes'
 theme = 'docsy'
